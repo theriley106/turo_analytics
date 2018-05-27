@@ -82,11 +82,21 @@ class search(object):
 	def keyword(self, keyword):
 		allResults = []
 		for val in self.database:
-			if str(keyword) in str(val):
+			if str(keyword).lower() in str(val).lower():
 				allResults.append(val)
 		return allResults
 
-		# Defines the headers that the proxy will use
+	def priceFromKeyword(self, keywordVal):
+		allPrices = []
+		for val in self.keyword(keywordVal):
+			allPrices.append(val['rate']['averageDailyPrice'])
+		try:
+			average = float(sum(allPrices)) / float(len(allPrices))
+		except:
+			average = 0
+		return average
+
+
 
 if __name__ == '__main__':
-	a = search()
+	pass
