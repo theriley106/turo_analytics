@@ -1,6 +1,7 @@
 import requests
 import random
 import json
+import glob
 
 CENTER_LAT = 39.8283
 # Center of US
@@ -24,7 +25,10 @@ def genMinMax(increments=50):
 	# Returns list of strings
 	listOfStrings = []
 	for i in range(0, 250, increments):
-		stringVal = "&maximumPrice={}&minimumPrice={}".format(i+increments, i)
+		maxPrice = i+increments
+		if maxPrice > 250:
+			maxPrice = 250
+		stringVal = "&maximumPrice={}&minimumPrice={}".format(maxPrice, i)
 		listOfStrings.append(stringVal)
 	return listOfStrings
 
@@ -41,9 +45,9 @@ def genDates(timeFrame=1):
 	endTime = "&endTime=0{}%3A00".format(randomTime)
 	return startDate + startTime + endDate + endTime
 
-def searchAirport(airportCode):
+def searchAirport(airportCode, increments=50):
 	allVehicles = []
-	for prices in genMinMax():
+	for prices in genMinMax(increments):
 		url = RESULTS_URL.format(airportCode, genDates())
 		url += prices
 		a = minRequest(url).json()
@@ -68,37 +72,21 @@ def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=5
 def genAllURLS():
 	returnAirports()
 
-if __name__ == '__main__':
-	#e = (minRequest(RESULTS_URL.format(genDates())).json())
-	#print json.dumps(e)
-	allResults = []
-	allAirports = returnAirports()
-	jsonNum = 1
-	allVehicles = 0
-	allVehicleURLs = []
-	duplicateVehicles = 0
-	for i, airports in enumerate(allAirports):
-		try:
-			airportCode = airports['code']
-			forRent = searchAirport(airportCode)
-			if len(forRent) == 0:
-				print("No Vehicles at {}".format(airportCode))
-			for val in forRent:
-				if val['vehicle']['url'] not in allVehicleURLs:
-					val['airport_code'] = airportCode
-					allResults.append(val)
-					allVehicles += 1
-				else:
-					duplicateVehicles += 1
-			print ("{}/{} - {} Vehicles found - {} list size - {} duplicate vehicles".format(i+1, len(allAirports), allVehicles, len(allResults), duplicateVehicles))
-			if len(allResults) > 3000:
-				with open('carInfo{}.json'.format(jsonNum), 'w') as outfile:
-					json.dump(allResults, outfile)
-				print("Saved to carInfo{}.json".format(jsonNum))
-				allResults = []
-				jsonNum += 1
-		except:
-			print ("Error on {}".format(airportCode))
+class search(object):
+	def __init__(self):
+		self.database = []
+		for file in glob.glob('./carDB*.json'):
+			for car in json.load(open(file)):
+				self.database.append(car)
 
-	#print len(searchAirport("GSP"))
-	#print len(returnAirports())
+	def keyword(self, keyword):
+		allResults = []
+		for val in self.database:
+			if str(keyword) in str(val):
+				allResults.append(val)
+		return allResults
+
+		# Defines the headers that the proxy will use
+
+if __name__ == '__main__':
+	a = search()
