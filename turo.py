@@ -1,5 +1,12 @@
 import requests
 
+CENTER_LAT = 39.8283
+# Center of US
+CENTER_LONG = 98.5795
+# Center of US
+
+AIRPORTS_URL = "https://turo.com/api/airports?alphaCountryCode=US&includeVehicleCount=true&latitude={0}&longitude={1}&maxDistanceInMiles={2}&maxNumberOfResults={3}"
+
 #NB. Original query string below. It seems impossible to parse and
 #reproduce query strings 100% accurately so the one below is given
 #in case the reproduced version is not "correct".
@@ -12,5 +19,15 @@ def minRequest(url):
     headers = {'Referer': 'https://turo.com/search?country=US&'}
     return requests.get(url, headers=headers)
 
+def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=500):
+    # Returns airports | Inputting no parameters will return all airports
+    if latitude == None or longitude == None:
+        # This means the info wasn't inputted
+        latitude = CENTER_LAT
+        longitude = CENTER_LONG
+    url = AIRPORTS_URL.format(latitude, longitude, maxDistance, maxResults)
+    # Creates the URL
+    return minRequest(url).json()
+
 if __name__ == '__main__':
-    print minRequest('https://turo.com/api/airports?alphaCountryCode=US&excludeLowActivityAirports=true&includeVehicleCount=true&latitude=33.22344050092164&longitude=-87.6465401142578&maxDistanceInMiles=100&maxNumberOfResults=500').json()
+    print len(returnAirports())
