@@ -10,8 +10,9 @@ THIS_MONTH = 5
 # This is the numerical value of this month | ie May
 
 AIRPORTS_URL = "https://turo.com/api/airports?alphaCountryCode=US&includeVehicleCount=true&latitude={0}&longitude={1}&maxDistanceInMiles={2}&maxNumberOfResults={3}"
-RESULTS_URL = "https://turo.com/api/search?airportCode=SFO&country=US&defaultZoomLevel=7&international=true&isMapSearch=false&itemsPerPage=500&maxNumberOfResults=500&locationType=Airport&maximumDistanceInMiles=60&region=CA&sortType=RELEVANCE{0}"
-
+RESULTS_URL = "https://turo.com/api/search?airportCode={0}&country=US&itemsPerPage=200&maxNumberOfResults=200&locationType=Airport&maximumDistanceInMiles=60{1}"
+FUTURE_TIME = 2
+# Months in advance - to make sure you're not searching already matched vehicles
 
 
 def getMakes():
@@ -23,7 +24,7 @@ def genMinMax(increments=50):
     # Returns list of strings
     listOfStrings = []
     for i in range(0, 250, increments):
-        stringVal = "&maximumPrice={}&minimumPrice={}".format(i, i+increments)
+        stringVal = "&maximumPrice={}&minimumPrice={}".format(i+increments, i)
         listOfStrings.append(stringVal)
     return listOfStrings
 
@@ -31,8 +32,8 @@ def genMinMax(increments=50):
 def genDates(timeFrame=1):
     # Timeframe is the total rental time
     # Returns a string
-    randomMonth = random.randint(THIS_MONTH+1, 12)
-    randomDay = random.randint(1, 28)
+    randomMonth = random.randint(THIS_MONTH+FUTURE_TIME, 9)
+    randomDay = random.randint(1, 9)
     randomTime = random.randint(1, 9)
     startDate = "&startDate=0{}%2F{}%2F2018".format(randomMonth, randomDay)
     startTime = "&startTime=0{}%3A00".format(randomTime)
@@ -40,8 +41,15 @@ def genDates(timeFrame=1):
     endTime = "&endTime=0{}%3A00".format(randomTime)
     return startDate + startTime + endDate + endTime
 
-#def searchAirport():
-
+def searchAirport(airportCode):
+    allVehicles = []
+    for prices in genMinMax():
+        url = RESULTS_URL.format(airportCode, genDates())
+        url += prices
+        a = minRequest(url).json()
+        for val in a['list']:
+            allVehicles.append(val)
+    return allVehicles
 
 def minRequest(url):
     headers = {'Referer': 'https://turo.com/search?country=US&'}
@@ -57,7 +65,11 @@ def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=5
     # Creates the URL
     return minRequest(url).json()
 
+def genAllURLS():
+    returnAirports()
+
 if __name__ == '__main__':
-    e = (minRequest(RESULTS_URL.format(genDates())).json())
-    print json.dumps(e)
+    #e = (minRequest(RESULTS_URL.format(genDates())).json())
+    #print json.dumps(e)
+    print len(searchAirport("SFO"))
     #print len(returnAirports())
