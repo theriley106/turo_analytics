@@ -16,60 +16,89 @@ FUTURE_TIME = 2
 
 
 def getMakes():
-    return requests.get("https://turo.com/api/search/makes")
+	return requests.get("https://turo.com/api/search/makes")
 
 #def genData():
 
 def genMinMax(increments=50):
-    # Returns list of strings
-    listOfStrings = []
-    for i in range(0, 250, increments):
-        stringVal = "&maximumPrice={}&minimumPrice={}".format(i+increments, i)
-        listOfStrings.append(stringVal)
-    return listOfStrings
+	# Returns list of strings
+	listOfStrings = []
+	for i in range(0, 250, increments):
+		stringVal = "&maximumPrice={}&minimumPrice={}".format(i+increments, i)
+		listOfStrings.append(stringVal)
+	return listOfStrings
 
 
 def genDates(timeFrame=1):
-    # Timeframe is the total rental time
-    # Returns a string
-    randomMonth = random.randint(THIS_MONTH+FUTURE_TIME, 9)
-    randomDay = random.randint(1, 9)
-    randomTime = random.randint(1, 9)
-    startDate = "&startDate=0{}%2F{}%2F2018".format(randomMonth, randomDay)
-    startTime = "&startTime=0{}%3A00".format(randomTime)
-    endDate = "&endDate=0{}%2F{}%2F2018".format(randomMonth, randomDay+timeFrame)
-    endTime = "&endTime=0{}%3A00".format(randomTime)
-    return startDate + startTime + endDate + endTime
+	# Timeframe is the total rental time
+	# Returns a string
+	randomMonth = random.randint(THIS_MONTH+FUTURE_TIME, 9)
+	randomDay = random.randint(1, 9)
+	randomTime = random.randint(1, 9)
+	startDate = "&startDate=0{}%2F{}%2F2018".format(randomMonth, randomDay)
+	startTime = "&startTime=0{}%3A00".format(randomTime)
+	endDate = "&endDate=0{}%2F{}%2F2018".format(randomMonth, randomDay+timeFrame)
+	endTime = "&endTime=0{}%3A00".format(randomTime)
+	return startDate + startTime + endDate + endTime
 
 def searchAirport(airportCode):
-    allVehicles = []
-    for prices in genMinMax():
-        url = RESULTS_URL.format(airportCode, genDates())
-        url += prices
-        a = minRequest(url).json()
-        for val in a['list']:
-            allVehicles.append(val)
-    return allVehicles
+	allVehicles = []
+	for prices in genMinMax():
+		url = RESULTS_URL.format(airportCode, genDates())
+		url += prices
+		a = minRequest(url).json()
+		for val in a['list']:
+			allVehicles.append(val)
+	return allVehicles
 
 def minRequest(url):
-    headers = {'Referer': 'https://turo.com/search?country=US&'}
-    return requests.get(url, headers=headers)
+	headers = {'Referer': 'https://turo.com/search?country=US&'}
+	return requests.get(url, headers=headers)
 
 def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=500):
-    # Returns airports | Inputting no parameters will return all airports
-    if latitude == None or longitude == None:
-        # This means the info wasn't inputted
-        latitude = CENTER_LAT
-        longitude = CENTER_LONG
-    url = AIRPORTS_URL.format(latitude, longitude, maxDistance, maxResults)
-    # Creates the URL
-    return minRequest(url).json()
+	# Returns airports | Inputting no parameters will return all airports
+	if latitude == None or longitude == None:
+		# This means the info wasn't inputted
+		latitude = CENTER_LAT
+		longitude = CENTER_LONG
+	url = AIRPORTS_URL.format(latitude, longitude, maxDistance, maxResults)
+	# Creates the URL
+	return minRequest(url).json()
 
 def genAllURLS():
-    returnAirports()
+	returnAirports()
 
 if __name__ == '__main__':
-    #e = (minRequest(RESULTS_URL.format(genDates())).json())
-    #print json.dumps(e)
-    print len(searchAirport("SFO"))
-    #print len(returnAirports())
+	#e = (minRequest(RESULTS_URL.format(genDates())).json())
+	#print json.dumps(e)
+	allResults = []
+	allAirports = returnAirports()
+	jsonNum = 1
+	allVehicles = 0
+	allVehicleURLs = []
+	duplicateVehicles = 0
+	for i, airports in enumerate(allAirports):
+		try:
+			airportCode = airports['code']
+			forRent = searchAirport(airportCode)
+			if len(forRent) == 0:
+				print("No Vehicles at {}".format(airportCode))
+			for val in forRent:
+				if val['vehicle']['url'] not in allVehicleURLs:
+					val['airport_code'] = airportCode
+					allResults.append(val)
+					allVehicles += 1
+				else:
+					duplicateVehicles += 1
+			print ("{}/{} - {} Vehicles found - {} list size - {} duplicate vehicles".format(i+1, len(allAirports), allVehicles, len(allResults), duplicateVehicles))
+			if len(allResults) > 3000:
+				with open('carInfo{}.json'.format(jsonNum), 'w') as outfile:
+					json.dump(allResults, outfile)
+				print("Saved to carInfo{}.json".format(jsonNum))
+				allResults = []
+				jsonNum += 1
+		except:
+			print ("Error on {}".format(airportCode))
+
+	#print len(searchAirport("GSP"))
+	#print len(returnAirports())
