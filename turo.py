@@ -83,7 +83,7 @@ def getMoreInfo(vehicleURL):
 class search(object):
 	def __init__(self):
 		self.database = []
-		for file in glob.glob('./moreInfo*.json'):
+		for file in glob.glob('./database/moreInfo*.json'):
 			for car in json.load(open(file)):
 				self.database.append(car)
 
@@ -110,8 +110,7 @@ class search(object):
 
 if __name__ == '__main__':
 	a = search()
-	for val in a.keyword('tesla'):
-		val = getMoreInfo(listing['vehicle']['url']).json()
+	for val in a.keyword('bugatti'):
 		model = val['vehicle']['model']
 		trim = val['vehicle']['trim']
 		if trim != None:
