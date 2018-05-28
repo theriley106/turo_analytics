@@ -72,10 +72,18 @@ def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=5
 def genAllURLS():
 	returnAirports()
 
+def getMoreInfo(vehicleURL):
+	vehicleID = vehicleURL[::-1].partition("/")[0][::-1]
+	params = (
+	    ('vehicleId', vehicleID),
+	    )
+	response = requests.get('https://turo.com/api/vehicle/detail', headers={'Referer': 'https://turo.com{}'.format(vehicleURL)}, params=params, cookies={})
+	return response
+
 class search(object):
 	def __init__(self):
 		self.database = []
-		for file in glob.glob('./carDB*.json'):
+		for file in glob.glob('./moreInfo*.json'):
 			for car in json.load(open(file)):
 				self.database.append(car)
 
@@ -96,7 +104,18 @@ class search(object):
 			average = 0
 		return average
 
+	#def search(self, model=None, make=None, year=None, )
+
 
 
 if __name__ == '__main__':
-	pass
+	a = search()
+	for val in a.keyword('tesla'):
+		val = getMoreInfo(listing['vehicle']['url']).json()
+		model = val['vehicle']['model']
+		trim = val['vehicle']['trim']
+		if trim != None:
+			model += " {}".format(trim)
+		city = val['location']['city']
+		dailyPrice = val['rate']['averageDailyPrice']
+		print("${} {} in {}".format(dailyPrice, model, city))
