@@ -1,4 +1,6 @@
 import requests
+import re
+import json
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
 class search(object):
@@ -28,7 +30,41 @@ def modelX():
 		e += 1
 	return allVehicles
 
+'''
+Script to grab Model S Pricing:
+
+trims = {}
+	trimList = []
+	a = modelS()
+	for val in a:
+		trimList.append(val['trim'])
+	for trim in list(set(trimList)):
+		if trim not in trims:
+			trims[trim] = []
+		for val in a:
+			if val['trim'] == trim:
+				trims[trim].append(val['list_price'])
+		trims[trim] = float("{0:.2f}".format((float(sum(trims[trim])) / float(len(trims[trim])))))
+	with open('modelSPricing.json', 'w') as outfile:
+		json.dump(trims, outfile)
+
+'''
+
 
 if __name__ == '__main__':
+	trims = {}
+	trimList = []
 	a = modelX()
-	print len(a)
+	for val in a:
+		trimList.append(val['trim'])
+	for trim in list(set(trimList)):
+		if trim not in trims:
+			trims[trim] = []
+		for val in a:
+			if val['trim'] == trim:
+				trims[trim].append(val['list_price'])
+		trims[trim] = float("{0:.2f}".format((float(sum(trims[trim])) / float(len(trims[trim])))))
+	with open('modelXPricing.json', 'w') as outfile:
+		json.dump(trims, outfile)
+
+

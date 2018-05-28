@@ -107,14 +107,22 @@ class search(object):
 	def searchByMake(self, make):
 		allResults = []
 		for val in self.database:
-			if val['vehicle']['make'].lower() == make.lower():
-				allResults.append(val)
+			try:
+				if val['vehicle']['make'].lower() == make.lower():
+					allResults.append(val)
+			except:
+				pass
+		return allResults
 
 	def searchByModel(self, model):
 		allResults = []
 		for val in self.database:
-			if val['vehicle']['model'].lower() == model.lower():
-				allResults.append(val)
+			try:
+				if val['vehicle']['model'].lower() == model.lower():
+					allResults.append(val)
+			except:
+				pass
+		return allResults
 
 	#def search(self, model=None, make=None, year=None, )
 
