@@ -104,6 +104,18 @@ class search(object):
 			average = 0
 		return average
 
+	def searchByMake(self, make):
+		allResults = []
+		for val in self.database:
+			if val['vehicle']['make'].lower() == make.lower():
+				allResults.append(val)
+
+	def searchByModel(self, model):
+		allResults = []
+		for val in self.database:
+			if val['vehicle']['model'].lower() == model.lower():
+				allResults.append(val)
+
 	#def search(self, model=None, make=None, year=None, )
 
 
