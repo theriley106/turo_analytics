@@ -124,17 +124,29 @@ class search(object):
 				pass
 		return allResults
 
+	def searchByModelYear(self, model, year):
+		allResults = []
+		for val in self.database:
+			try:
+				if val['vehicle']['model'].lower() == model.lower() and val['vehicle']['year'] == year:
+					allResults.append(val)
+			except:
+				pass
+		return allResults
+
 	#def search(self, model=None, make=None, year=None, )
 
 
 
 if __name__ == '__main__':
 	a = search()
-	for val in a.keyword('bugatti'):
+	for val in a.searchByModelYear('model s', 2013):
+		print str(val['rate']['averageDailyPrice']) + " " + val['location']['city'] + " " + val['vehicle']['url']
+	'''for val in a.keyword('bugatti'):
 		model = val['vehicle']['model']
 		trim = val['vehicle']['trim']
 		if trim != None:
 			model += " {}".format(trim)
 		city = val['location']['city']
 		dailyPrice = val['rate']['averageDailyPrice']
-		print("${} {} in {}".format(dailyPrice, model, city))
+		print("${} {} in {}".format(dailyPrice, model, city))'''
