@@ -139,9 +139,8 @@ class search(object):
 
 
 if __name__ == '__main__':
-	a = search()
-	for val in a.searchByModelYear('model s', 2013):
-		print str(val['rate']['averageDailyPrice']) + " " + val['location']['city'] + " " + val['vehicle']['url']
+	with open('airports.json', 'w') as outfile:
+		json.dump(returnAirports(), outfile)
 	'''for val in a.keyword('bugatti'):
 		model = val['vehicle']['model']
 		trim = val['vehicle']['trim']
