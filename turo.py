@@ -1,6 +1,7 @@
 import requests
 import random
 import json
+import zipfile
 import glob
 
 CENTER_LAT = 39.8283
@@ -80,6 +81,15 @@ def getMoreInfo(vehicleURL):
 	response = requests.get('https://turo.com/api/vehicle/detail', headers={'Referer': 'https://turo.com{}'.format(vehicleURL)}, params=params, cookies={})
 	return response
 
+def first_time_setup(folder_name='dataset'):
+	for file in glob.glob("{}/*.zip".format(folder_name)):
+		print("Extracting {}...".format(file))
+		zip_ref = zipfile.ZipFile(file, 'r')
+		zip_ref.extractall("{}/".format(folder_name))
+		zip_ref.close()
+		print("Removing {}...".format(file))
+		os.remove(file)
+
 class search(object):
 	def __init__(self):
 		self.database = []
@@ -139,8 +149,9 @@ class search(object):
 
 
 if __name__ == '__main__':
-	with open('airports.json', 'w') as outfile:
-		json.dump(returnAirports(), outfile)
+	first_time_setup()
+	'''with open('airports.json', 'w') as outfile:
+		json.dump(returnAirports(), outfile)'''
 	'''for val in a.keyword('bugatti'):
 		model = val['vehicle']['model']
 		trim = val['vehicle']['trim']
