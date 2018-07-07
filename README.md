@@ -2,10 +2,10 @@
 Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 <center><h1><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h1></center>
 
-|Model S|
 
-| Model   | Average Rental Price   |
-| -------------------- |-------------:|
+# Model S *Used* Market Prices
+| Model   | Market Price   |
+| -------------------- |----------:|
 |2016.5 AWD 70D | $64,688.71|
 |RWD 85 kWh Battery | $59,365.30|
 |2016.5 4dr Sedan AWD 60D | $71,496.00|
