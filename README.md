@@ -5,7 +5,7 @@ Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 |Model S|
 
 | Model   | Average Rental Price   |
-| -------------------- |:-------------:|
+| -------------------- |-------------:|
 |2016.5 AWD 70D | $64,688.71|
 |RWD 85 kWh Battery | $59,365.30|
 |2016.5 4dr Sedan AWD 60D | $71,496.00|
