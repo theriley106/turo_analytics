@@ -2,6 +2,16 @@
 Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 <center><h1><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h1></center>
 
+## Getting Dataset
+
+<p align="center">
+  <img src="src/searchLatLong.png"/>
+</p>
+<i><h3 align="center">Long Lat Points with Radius encompassing entire continental United States</h3></i>
+
+
+
+
 
 # Model S *Used* Market Prices
 | Model   | Market Price   |
