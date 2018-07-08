@@ -5,7 +5,7 @@ Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 ## Getting Dataset
 
 <p align="center">
-  <img src="src/searchLatLong.png"/>
+  <img src="src/searchLongLat.png"/>
 </p>
 <i><h3 align="center">Long Lat Points with Radius encompassing entire continental United States</h3></i>
 
