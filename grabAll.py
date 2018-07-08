@@ -1,7 +1,7 @@
 import requests
 import random
 import json
-
+import re
 CENTER_LAT = 39.8283
 # Center of US
 CENTER_LONG = 98.5795
@@ -13,6 +13,106 @@ AIRPORTS_URL = "https://turo.com/api/airports?alphaCountryCode=US&includeVehicle
 RESULTS_URL = "https://turo.com/api/search?airportCode={0}&country=US&itemsPerPage=200&maxNumberOfResults=200&locationType=Airport&maximumDistanceInMiles=60{1}"
 FUTURE_TIME = 2
 # Months in advance - to make sure you're not searching already matched vehicles
+#&maximumPrice=60&minimumPrice=10
+
+def grabCars(lat='37.6213', lng='-122.3790', maxInMiles=20):
+	ongoingList = []
+	headers = {
+		'Pragma': 'no-cache',
+		'Accept-Encoding': 'gzip, deflate, br',
+		'Accept-Language': 'en-US,es-US;q=0.8,es;q=0.6,ru-BY;q=0.4,ru;q=0.2,en;q=0.2',
+		'Accept': '*/*',
+		'Referer': 'https://turo.com/search?',
+		'Connection': 'keep-alive',
+		'Cache-Control': 'no-cache',
+	}
+
+	params = (
+	    ('country', 'US'),
+	    ('defaultZoomLevel', '14'),
+	    ('endDate', '09/15/2018'),
+	    ('endTime', '10:00'),
+	    ('international', 'true'),
+	    ('isMapSearch', 'true'),
+	    ('itemsPerPage', '200'),
+	    ('location', 'Map location'),
+	    ('locationType', 'place'),
+	    ('maximumDistanceInMiles', str(maxInMiles)),
+	    ('Latitude', str(lat)),
+	    ('Longitude', str(lng)),
+	    ('sortType', 'RELEVANCE'),
+	    ('startDate', '09/08/2018'),
+	    ('startTime', '10:00'),
+	)
+	result = None
+	for i in range(3):
+		try:
+			result = requests.get('https://turo.com/api/search', headers=headers, params=params, timeout=15)
+			if result != None:
+				break
+		except Exception as exp:
+			print exp
+	#print result
+	result = result.json()
+	if len(result['list']) >= 180:
+		# This means the list is too large
+		ongoingList = grabInDepthCars(lat, lng, maxInMiles)
+	else:
+		ongoingList = result['list']
+	listOfIDs = []
+	for val in ongoingList:
+		vID = val['vehicle']['id']
+		if vID not in listOfIDs:
+			listOfIDs.append(vID)
+		else:
+			ongoingList.remove(val)
+	return ongoingList
+
+def grabInDepthCars(lat, lng, maxInMiles):
+	ongoingList = []
+	for urlParam in genMinMax(10):
+		headers = {
+			'Pragma': 'no-cache',
+			'Accept-Encoding': 'gzip, deflate, br',
+			'Accept-Language': 'en-US,es-US;q=0.8,es;q=0.6,ru-BY;q=0.4,ru;q=0.2,en;q=0.2',
+			'Accept': '*/*',
+			'Referer': 'https://turo.com/search?',
+			'Connection': 'keep-alive',
+			'Cache-Control': 'no-cache',
+		}
+
+		params = (
+			('country', 'US'),
+		    ('defaultZoomLevel', '14'),
+		    ('endDate', '09/15/2018'),
+		    ('endTime', '10:00'),
+		    ('international', 'true'),
+		    ('isMapSearch', 'true'),
+		    ('itemsPerPage', '200'),
+		    ('location', 'Map location'),
+		    ('locationType', 'place'),
+		    ('maximumDistanceInMiles', '10'),
+		    ('Latitude', str(lat)),
+		    ('Longitude', str(lng)),
+		    ('sortType', 'RELEVANCE'),
+		    ('startDate', '09/08/2018'),
+		    ('startTime', '10:00'),
+			('maximumDistanceInMiles', str(maxInMiles)),
+			('maximumPrice', re.findall('\d+', str(urlParam))[0]),
+			('minimumPrice', re.findall('\d+', str(urlParam))[1]),
+		)
+		result = None
+		for i in range(3):
+			try:
+				result = requests.get('https://turo.com/api/search', headers=headers, params=params, timeout=15)
+				if result != None:
+					break
+			except Exception as exp:
+				print exp
+		result = result.json()
+		for val in result['list']:
+			ongoingList.append(val)
+	return ongoingList
 
 
 def getMakes():
