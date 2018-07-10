@@ -3,6 +3,7 @@ import random
 import json
 import zipfile
 import glob
+import os
 
 CENTER_LAT = 39.8283
 # Center of US
