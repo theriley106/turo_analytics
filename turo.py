@@ -4,6 +4,7 @@ import json
 import zipfile
 import glob
 import os
+import csv
 
 CENTER_LAT = 39.8283
 # Center of US
@@ -77,8 +78,8 @@ def genAllURLS():
 def getMoreInfo(vehicleURL):
 	vehicleID = vehicleURL[::-1].partition("/")[0][::-1]
 	params = (
-	    ('vehicleId', vehicleID),
-	    )
+		('vehicleId', vehicleID),
+		)
 	response = requests.get('https://turo.com/api/vehicle/detail', headers={'Referer': 'https://turo.com{}'.format(vehicleURL)}, params=params, cookies={})
 	return response
 
@@ -88,13 +89,32 @@ def first_time_setup(folder_name='dataset'):
 		zip_ref = zipfile.ZipFile(file, 'r')
 		zip_ref.extractall("{}/".format(folder_name))
 		zip_ref.close()
-		print("Removing {}...".format(file))
-		os.remove(file)
+		#print("Removing {}...".format(file))
+		#os.remove(file)
+
+def saveToCSV(listVal, saveAs):
+	with open(saveAs, "wb") as f:
+		writer = csv.writer(f)
+		writer.writerows(listVal)
+
+def saveToJSON(listVal, saveAs):
+	with open(saveAs, 'w') as outfile:
+		json.dump(listVal, outfile)
+
+def saveData(listVal, saveAs):
+	fileExtension = saveAs[::-1].partition(".")[0][::-1]
+	if fileExtension.lower() == "json":
+		saveToJSON(listVal, saveAs)
+	elif fileExtension.lower() == "csv":
+		saveToCSV(listVal, saveAs)
+	else:
+		raise Exception("File type not valid...")
 
 class search(object):
 	def __init__(self):
 		self.database = []
-		for file in glob.glob('./database/moreInfo*.json'):
+		#first_time_setup()
+		for file in glob.glob('./dataset/*.json'):
 			for car in json.load(open(file)):
 				self.database.append(car)
 
@@ -115,7 +135,7 @@ class search(object):
 			average = 0
 		return average
 
-	def searchByMake(self, make):
+	def searchByMake(self, make, save=None):
 		allResults = []
 		for val in self.database:
 			try:
@@ -123,9 +143,11 @@ class search(object):
 					allResults.append(val)
 			except:
 				pass
+		if save != None:
+			saveData(allResults, save)
 		return allResults
 
-	def searchByModel(self, model):
+	def searchByModel(self, model, save=None):
 		allResults = []
 		for val in self.database:
 			try:
@@ -133,9 +155,11 @@ class search(object):
 					allResults.append(val)
 			except:
 				pass
+		if save != None:
+			saveData(allResults, save)
 		return allResults
 
-	def searchByModelYear(self, model, year):
+	def searchByModelYear(self, model, year, save=None):
 		allResults = []
 		for val in self.database:
 			try:
@@ -143,6 +167,8 @@ class search(object):
 					allResults.append(val)
 			except:
 				pass
+		if save != None:
+			saveData(allResults, save)
 		return allResults
 
 	#def search(self, model=None, make=None, year=None, )
@@ -150,7 +176,7 @@ class search(object):
 
 
 if __name__ == '__main__':
-	first_time_setup()
+	pass
 	'''with open('airports.json', 'w') as outfile:
 		json.dump(returnAirports(), outfile)'''
 	'''for val in a.keyword('bugatti'):
