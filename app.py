@@ -28,5 +28,17 @@ def searchByMake(make):
 	print len(DATABASE)
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
+@app.route('/searchByModel/<make>', methods=['GET'])
+def searchByModel(model):
+	model = model.lower()
+	try:
+		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
+	except:
+		e = turo.search()
+		e.searchByMake(make, "dataset/{}Viz.json".format(make))
+		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
+	print len(DATABASE)
+	return render_template("geoViz.html", DATABASE=DATABASE)
+
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=5000, debug=True)
