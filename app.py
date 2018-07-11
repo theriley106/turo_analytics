@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, Markup, jsonify, make_response, send_from_directory, session
 import json
 import turo
+import os
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -19,9 +20,9 @@ def geoViz():
 @app.route('/searchByMake/<make>', methods=['GET'])
 def searchByMake(make):
 	make = make.lower()
-	try:
+	if request.args.get('force_load') != "True" and os.path.isfile("dataset/{}Viz.json".format(make)):
 		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
-	except:
+	else:
 		e = turo.search()
 		e.searchByMake(make, "dataset/{}Viz.json".format(make))
 		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
@@ -30,9 +31,9 @@ def searchByMake(make):
 
 @app.route('/searchByModel/<model>', methods=['GET'])
 def searchByModel(model):
-	try:
+	if request.args.get('force_load') != "True" and os.path.isfile("dataset/{}Viz.json".format(model.replace("%20", ""))):
 		DATABASE = json.load(open("dataset/{}Viz.json".format(model.replace("%20", ""))))
-	except:
+	else:
 		e = turo.search()
 		print model.replace("%20", " ").lower()
 		e.searchByModel(model.replace("%20", " ").lower(), "dataset/{}Viz.json".format(model.replace("%20", "")))
