@@ -48,6 +48,7 @@ Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 |4dr Sedan Signature | $49,151.60|
 |AWD 85D Dual Motor | $64,942.06|
 
+
 ```python
 # This is a helper function to convert the floats into dollar amounts
 # This was used for creating the README...
