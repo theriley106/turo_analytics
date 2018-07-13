@@ -41,6 +41,10 @@ var geoJson = [
     "geometry": { "type": "Point", "coordinates": [{{ info.location.longitude }}, {{ info.location.latitude }}]},
     "properties": {
         "marker-color": "#ff8888",
+        "image": "{{ info.images[0].thumbnails['620x372'] }}",
+        "year": "{{ info.vehicle.year }}",
+        "make": "{{ info.vehicle.make }}",
+        "model": "{{ info.vehicle.model }}",
     }
 },
 
@@ -54,7 +58,10 @@ myLayer.on('layeradd', function(e) {
         feature = marker.feature;
 
     // Create custom popup content
-    var popupContent =  '';
+    var popupContent =  '<a target="_blank" class="popup" href="' + "" + '">' +
+                            '<img src="' + feature.properties.image + '" />' +
+                            feature.properties.year + " " + feature.properties.make + " " + feature.properties.model +
+                        '</a>';
 
     // http://leafletjs.com/reference.html#popup
     marker.bindPopup(popupContent,{
