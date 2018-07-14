@@ -58,3 +58,4 @@ def convertMoney(string_val):
 		string_val = string_val.replace(val, '${:,.2f}'.format(float(val)))
 	return string_val
 ```
+
