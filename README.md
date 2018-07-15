@@ -9,6 +9,170 @@ Finding vehicle arbitrage opportunities in the Turo car rental marketplace
 </p>
 <i><h3 align="center">Long Lat Points with Radius encompassing entire continental United States</h3></i>
 
+## Example Response
+
+```javascript
+{
+    "distance": 17.0,
+    "reviewCount": 0,
+    "businessClass": false,
+    "renterTripsTaken": 0,
+    "rating": null,
+    "distanceLabel": "17 mi",
+    "newListing": false,
+    "distanceWithUnit":
+    {
+        "scalar": 17,
+        "unlimited": false,
+        "unit": "MI"
+    },
+    "owner":
+    {
+        "lastName": "B.",
+        "image":
+        {
+            "verified": false,
+            "thumbnails":
+            {
+                "32x32": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.32x32.jpg",
+                "225x225": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.300x300.jpg",
+                "84x84": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.84x84.jpg",
+                "300x300": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.300x300.jpg"
+            },
+            "resizableUrlTemplate": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.{width}x{height}.jpg",
+            "placeholder": false,
+            "id": null,
+            "originalImageUrl": "https://d1zgdcrdir5wgt.cloudfront.net/media/driver/iXYfdNi1ReyINVNz8F4o_A.jpg"
+        },
+        "id": 4783843,
+        "firstName": "Marcus",
+        "name": "Marcus B."
+    },
+    "rate":
+    {
+        "monthly": 0.3,
+        "averageDailyPrice": 902.0,
+        "weekly": 0.15,
+        "daily": 902.0,
+        "averageDailyPriceWithCurrency":
+        {
+            "amount": 902.0,
+            "currencyCode": "USD"
+        }
+    },
+    "rentableFromSearchedAirport": false,
+    "freeDeliveryPromotion": false,
+    "location":
+    {
+        "city": "Rochester Hills",
+        "country": "US",
+        "precision":
+        {
+            "level": "APPROXIMATE",
+            "accuracy": 0.09320565
+        },
+        "longitude": -83.12675,
+        "locationSource": "GOOGLE",
+        "state": "MI",
+        "addressLines": ["Rochester Hills, MI"],
+        "address": "Rochester Hills, MI 48307",
+        "latitude": 42.639309,
+        "timeZone": "America/New_York"
+    },
+    "responseTime": null,
+    "vehicle":
+    {
+        "trim": null,
+        "automaticTransmission": true,
+        "name": "Marcus's Maserati",
+        "url": "/rentals/cars/mi/rochester-hills/maserati-quattroporte/355498",
+        "image":
+        {
+            "verified": false,
+            "thumbnails":
+            {
+                "620x372": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.620x372.jpg",
+                "50x30": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.50x30.jpg",
+                "170x125": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.170x102.jpg",
+                "574x343": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.620x372.jpg",
+                "170x102": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.170x102.jpg",
+                "100x60": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.100x60.jpg"
+            },
+            "resizableUrlTemplate": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.{width}x{height}.jpg",
+            "placeholder": false,
+            "id": null,
+            "originalImageUrl": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.jpg"
+        },
+        "marketCountry": "US",
+        "year": 2012,
+        "id": 355498,
+        "listingCreatedTime": 1513255482000,
+        "registration": null,
+        "model": "Quattroporte",
+        "type": "car",
+        "make": "Maserati",
+        "marketCurrency":
+        {
+            "decimalPlaces": 2,
+            "defaultFractionDigits": 2,
+            "symbol": "USD",
+            "currencyCode": "USD"
+        }
+    },
+    "images": [
+    {
+        "verified": false,
+        "thumbnails":
+        {
+            "620x372": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.620x372.jpg",
+            "50x30": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.50x30.jpg",
+            "170x125": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.170x102.jpg",
+            "574x343": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.620x372.jpg",
+            "170x102": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.170x102.jpg",
+            "100x60": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.100x60.jpg"
+        },
+        "resizableUrlTemplate": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.{width}x{height}.jpg",
+        "placeholder": false,
+        "id": null,
+        "originalImageUrl": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/nZw5PNEHRV20pm2JLYAHoA.jpg"
+    },
+    {
+        "verified": false,
+        "thumbnails":
+        {
+            "620x372": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.620x372.jpg",
+            "50x30": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.50x30.jpg",
+            "170x125": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.170x102.jpg",
+            "574x343": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.620x372.jpg",
+            "170x102": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.170x102.jpg",
+            "100x60": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.100x60.jpg"
+        },
+        "resizableUrlTemplate": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.{width}x{height}.jpg",
+        "placeholder": false,
+        "id": null,
+        "originalImageUrl": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/fxG0_Sd0TL6p55sBd4mxYQ.jpg"
+    },
+    {
+        "verified": false,
+        "thumbnails":
+        {
+            "620x372": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.620x372.jpg",
+            "50x30": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.50x30.jpg",
+            "170x125": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.170x102.jpg",
+            "574x343": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.620x372.jpg",
+            "170x102": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.170x102.jpg",
+            "100x60": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.100x60.jpg"
+        },
+        "resizableUrlTemplate": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.{width}x{height}.jpg",
+        "placeholder": false,
+        "id": null,
+        "originalImageUrl": "https://d1zgdcrdir5wgt.cloudfront.net/media/vehicle/images/3gPCguRtTpGrLxtiEMWzUA.jpg"
+    }],
+    "instantBookDisplayed": true,
+    "responseRate": null,
+    "deliveryLabel": null
+}
+```
 
 
 
