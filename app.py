@@ -53,5 +53,9 @@ def search(query):
 	print len(DATABASE)
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
+@app.route('/makes/', methods=['GET'])
+def getAllMakes():
+	return jsonify(turo.getMakes())
+
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=5000, debug=True)
