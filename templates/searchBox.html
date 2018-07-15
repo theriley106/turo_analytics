@@ -1,0 +1,192 @@
+<style>
+.input-group .form-control:not(:first-child):not(:last-child), .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child) {
+  border-radius: 15px !important;
+}
+.col-md-6 {
+        width: 80% !important;
+        margin: auto;
+    }
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 15px !important;
+    background-color: #d1d1d1 !important;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+  float: none;
+}
+
+ #my_button{
+          position:absolute;
+          bottom:2%;
+          color: #fff;
+          background-color: #4d90fe;
+          padding: 11px;
+
+          border: 1px solid transparent;
+          border-radius: 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          alignment-baseline:central;
+          width:90%;
+          left:5%;
+          text-align:center;
+          text-decoration:none;
+
+
+          margin:0px auto;}
+
+
+         #my_button:hover{
+             background-color:#3B6EC2;}
+
+</style>
+<div class="col-md-6">
+  <br><br>
+  <div id="custom-search-input">
+      <div class="input-group col-md-12" id="locationField">
+          <input type="text" id="autocomplete" name="address" class="form-control input-lg" placeholder="Input an SQL Query">
+          <span class="input-group-btn">
+              <button class="btn btn-info btn-lg" onclick="openModel();">
+                  <i class="glyphicon glyphicon-search"></i>
+              </button>
+              </span>
+
+
+          </div>
+
+
+      </div>
+
+</div>
+<script>
+// This example displays an address form, using the autocomplete feature
+// of the Google Places API to help users fill in the information.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var placeSearch, autocomplete;
+
+function initAutocomplete() {
+// Create the autocomplete object, restricting the search to geographical
+// location types.
+autocomplete = new google.maps.places.Autocomplete(
+  /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+  {types: ['geocode']});
+
+// When the user selects an address from the dropdown, populate the address
+// fields in the form.
+autocomplete.addListener('place_changed', moveToAddress);
+}
+
+function moveToAddress() {
+  // var address = document.getElementById('autocomplete').value;
+  // console.log(address);
+  // Converting string to json so we can interact with it
+  var address = document.getElementById('autocomplete').value;
+  myNewLayer = L.mapbox.featureLayer().addTo(map);
+  geoJson = []
+
+  var place = autocomplete.getPlace();
+  var coords = place.geometry.location.toJSON();
+  map.setView(new L.LatLng(coords.lat, coords.lng), 17);
+  var url = "/getInstanceByLongLat/" + coords.lat + "/" + coords.lng;
+  jsonString = httpGet(url);
+  // This is the actual file structure
+  obVal = JSON.parse(jsonString);
+  // Converting string to json so we can interact with it
+
+
+
+  // This generates the geo json for the coords that are not the main ones
+  for (fileIndex in obVal) {
+    // The json object is a list, so this is the INDEX of all items in the list
+    listElem = obVal[fileIndex];
+    newVal = `{"type": "Feature","geometry": { "type": "Point", "coordinates": [-122.5046792232, 37.7744419948]},"properties": {"marker-symbol": "MARKER_SYMBOL","marker-color": "#6e8dea","city": "700 Block of 44TH AVE", "BOX_VAL": "HTML"}}`;
+    newVal = newVal.replace("-122.5046792232", listElem.longitude);
+    newVal = newVal.replace("37.7744419948", listElem.latitude);
+    newVal = newVal.replace("MARKER_SYMBOL", listElem.priority);
+    newVal = newVal.replace("#6e8dea", listElem.mapColor);
+    newVal = newVal.replace("700 Block of 44TH AVE", listElem.address);
+    newVal = newVal.replace("HTML", listElem.HTML);
+    geoJson.push(JSON.parse(newVal));
+  }
+  // This is the geo json for the coords that are not the main ones
+
+
+
+var popup1 = new L.Popup({'autoClose':false});
+popup1.setLatLng([coords.lat, coords.lng]);
+var url = "/genPopUp/" + coords.lat + "/" + coords.lng;
+var htmlString = httpGet(url);
+var htmlString = "<h1><center><b>" + address + "</b></center></h1>" + htmlString;
+popup1.setContent(htmlString);
+L.marker([coords.lat, coords.lng]).addTo(map)
+    .bindPopup(popup1).openPopup();
+
+      myLayer = L.mapbox.featureLayer().addTo(map);
+
+
+      // Add custom popups to each using our custom feature properties
+      myLayer.on('layeradd', function(e) {
+          var marker = e.layer,
+              feature = marker.feature;
+
+          // Create custom popup content
+          var popupContent =  feature.properties.BOX_VAL;
+
+          // http://leafletjs.com/reference.html#popup
+          marker.bindPopup(popupContent,{
+              closeButton: false,
+              minWidth: 400,
+          })
+      });
+myLayer.setGeoJSON(geoJson);
+
+      // Add features to the map
+  }
+
+function httpGet(theUrl)
+// The network request grabs the json containing mp3 structure
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChcmCaga6Qc3x3mIUuJf7MZIw-SrHaDx4&libraries=places&callback=initAutocomplete" async defer></script>
