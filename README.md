@@ -1,5 +1,5 @@
 # turo_analytics
-Analyzing Turo rental car data to find vehicle arbitrage opportunities in the Turo car rental marketplace
+Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Francisco
 <center><h1><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h1></center>
 
 ## Getting Dataset
