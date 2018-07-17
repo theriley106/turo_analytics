@@ -11,7 +11,7 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 ## Dataset
 
-This dataset contains information on roughly ~20,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains the following information for each vehicle.
+This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains the following information for each vehicle.
 
 ## Example Response
 
