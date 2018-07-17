@@ -1,5 +1,5 @@
-# turo_arbitrage
-Finding vehicle arbitrage opportunities in the Turo car rental marketplace
+# turo_analytics
+Analyzing Turo rental car data to find vehicle arbitrage opportunities in the Turo car rental marketplace
 <center><h1><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h1></center>
 
 ## Getting Dataset
@@ -8,6 +8,10 @@ Finding vehicle arbitrage opportunities in the Turo car rental marketplace
   <img src="src/searchLongLat.png"/>
 </p>
 <i><h3 align="center">Long Lat Points with Radius encompassing entire continental United States</h3></i>
+
+## Dataset
+
+This dataset contains information on roughly ~20,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains the following information for each vehicle.
 
 ## Example Response
 
