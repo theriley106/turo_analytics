@@ -106,3 +106,5 @@ dataset/*.json
 dataset/DATASET_*.json
 *.zip
 dataset/DATASET_1
+
+credentials/*.txt
