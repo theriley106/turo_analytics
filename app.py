@@ -19,26 +19,16 @@ def geoViz():
 
 @app.route('/searchByMake/<make>', methods=['GET'])
 def searchByMake(make):
-	make = make.lower()
-	if request.args.get('force_load') != "True" and os.path.isfile("dataset/{}Viz.json".format(make)):
-		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
-	else:
-		e = turo.search()
-		e.searchByMake(make, "dataset/{}Viz.json".format(make))
-		DATABASE = json.load(open("dataset/{}Viz.json".format(make)))
-	print len(DATABASE)
-	return render_template("geoViz.html", DATABASE=DATABASE)
+	e = turo.search()
+	f = e.searchByMake(make, "dataset/{}Viz.json".format(make))
+	return render_template("geoViz.html", DATABASE=f)
 
 @app.route('/searchByModel/<model>', methods=['GET'])
 def searchByModel(model):
-	if request.args.get('force_load') != "True" and os.path.isfile("dataset/{}Viz.json".format(model.replace("%20", ""))):
-		DATABASE = json.load(open("dataset/{}Viz.json".format(model.replace("%20", ""))))
-	else:
-		e = turo.search()
-		print model.replace("%20", " ").lower()
-		e.searchByModel(model.replace("%20", " ").lower(), "dataset/{}Viz.json".format(model.replace("%20", "")))
-		DATABASE = json.load(open("dataset/{}Viz.json".format(model.replace("%20", ""))))
-	print len(DATABASE)
+	e = turo.search()
+	print model.replace("%20", " ").lower()
+	f = e.searchByModel(model.replace("%20", " ").lower(), "dataset/{}Viz.json".format(model.replace("%20", "")))
+	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
 @app.route('/search/<query>', methods=['GET'])

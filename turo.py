@@ -5,7 +5,10 @@ import zipfile
 import glob
 import os
 import csv
-
+import psycopg2
+import json
+import credentials
+import re
 CENTER_LAT = 39.8283
 # Center of US
 CENTER_LONG = 98.5795
@@ -113,10 +116,6 @@ def saveData(listVal, saveAs):
 class search(object):
 	def __init__(self):
 		self.database = []
-		#first_time_setup()
-		for file in glob.glob('./dataset/*.json'):
-			for car in json.load(open(file)):
-				self.database.append(car)
 
 	def keyword(self, keyword):
 		allResults = []
@@ -137,26 +136,28 @@ class search(object):
 
 	def searchByMake(self, make, save=None):
 		allResults = []
-		for val in self.database:
-			try:
-				if val['vehicle']['make'].lower() == make.lower():
-					allResults.append(val)
-			except:
-				pass
-		if save != None:
-			saveData(allResults, save)
+		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+		cursor = conn.cursor()
+		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb WHERE vehicle_make = '{}'".format(make.title()))
+		for val in cursor.fetchall():
+			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
+		  	allResults.append([b, a])
+		  	print [b, a]
+		conn.commit()
+		cursor.close()
 		return allResults
 
 	def searchByModel(self, model, save=None):
 		allResults = []
-		for val in self.database:
-			try:
-				if val['vehicle']['model'].lower() == model.lower():
-					allResults.append(val)
-			except:
-				pass
-		if save != None:
-			saveData(allResults, save)
+		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+		cursor = conn.cursor()
+		cursor.execute("SELECT location_longitude, location_latitude FROM turodb WHERE vehicle_make = 'Tesla'")
+		for val in cursor.fetchall():
+			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
+		  	allResults.append([b, a])
+		  	print [b, a]
+		conn.commit()
+		cursor.close()
 		return allResults
 
 	def searchByModelYear(self, model, year, save=None):
