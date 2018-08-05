@@ -3,7 +3,7 @@ import json
 import turo
 import os
 
-app = Flask(__name__, static_url_path='/static', threaded=True)
+app = Flask(__name__, static_url_path='/static')
 
 
 @app.route('/', methods=['GET'])
@@ -49,6 +49,6 @@ def getAllMakes():
 	return jsonify(turo.getMakes())
 
 if __name__ == '__main__':
-	app.run(host='127.0.0.1', port=5000, debug=True)
+	app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
 
 
