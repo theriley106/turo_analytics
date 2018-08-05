@@ -3,7 +3,7 @@ import json
 import turo
 import os
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/static', threaded=True)
 
 
 @app.route('/', methods=['GET'])
