@@ -4,3 +4,4 @@ boto3==1.4.8
 gunicorn==19.7.1
 bs4==0.0.1
 requests==2.18.4
+psycopg2==2.7.2
