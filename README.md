@@ -227,9 +227,9 @@ def convertMoney(string_val):
 	return string_val
 ```
 
-**PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)**
+**PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)
 
-My Email: ChristopherLambert106@gmail.com
+My Email: ChristopherLambert106@gmail.com**
 
 
 
