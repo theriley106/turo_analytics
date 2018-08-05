@@ -142,7 +142,6 @@ class search(object):
 		for val in cursor.fetchall():
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
 		  	allResults.append([b, a])
-		  	print [b, a]
 		conn.commit()
 		cursor.close()
 		return allResults
@@ -155,7 +154,6 @@ class search(object):
 		for val in cursor.fetchall():
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
 		  	allResults.append([b, a])
-		  	print [b, a]
 		conn.commit()
 		cursor.close()
 		return allResults
