@@ -19,20 +19,30 @@
     box-shadow: none;
 }
 
-#custom-search-input button{
-    margin: 2px 0 0 0;
-    background: none;
-    box-shadow: none;
+#custom-search-input {
     border: 0;
-    color: #666666;
-    padding: 0 8px 0 10px;
-    border-left: solid 1px #ccc;
+    box-shadow: none;
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+#custom-search-input button{
+    border: 0;
+    box-shadow: none;
 }
 
 #custom-search-input button:hover{
     border: 0;
     box-shadow: none;
-    border-left: solid 1px #ccc;
 }
 
 #custom-search-input .glyphicon-search{
@@ -74,16 +84,16 @@
 <div class="col-md-6">
   <br><br>
   <div id="custom-search-input">
-      <div class="input-group col-md-12" id="locationField">
-          <input type="text" id="autocomplete" name="address" class="form-control input-lg" placeholder="Search by Keyword">
-          <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" onclick="openModel();">
-                  <i class="glyphicon glyphicon-search"></i>
-              </button>
-              </span>
-
-
+  <div class="dropdown" id="custom-search-input">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
           </div>
+        </div>
 
 
       </div>
