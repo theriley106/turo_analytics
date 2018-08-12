@@ -50,7 +50,7 @@ def getAllMakes():
 
 @app.route('/cool/', methods=['GET'])
 def cool():
-	return render_template("cool.html")
+	return render_template("cool2.html")
 
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
