@@ -151,6 +151,9 @@
     //Do not include! This prevents the form from submitting for DEMO purposes only!
 
 });
+function myFunction() {
+    alert("new function");         // The function returns the product of p1 and p2
+}
 </script>
 </head>
 
@@ -161,7 +164,7 @@
   <div id="search">
     <button type="button" class="close">×</button>
 
-        <form action="http://google.com">
+        <form id='submissionval' onsubmit="alert('this works properly')">
         <input id="searchval" type="search" value="" placeholder="type keyword(s) here" />
             <input type="submit" class="btn btn-primary">Search</button>
         </form>
@@ -172,7 +175,7 @@
 
 
 
-<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Model';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onsubmit', 'myFunction()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
 <a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Make';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
 <a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Keyword';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>
 
