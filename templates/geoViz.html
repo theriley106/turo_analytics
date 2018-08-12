@@ -149,10 +149,7 @@
 
 
     //Do not include! This prevents the form from submitting for DEMO purposes only!
-    $('form').submit(function(event) {
-        event.preventDefault();
-        return false;
-    })
+
 });
 </script>
 </head>
@@ -163,10 +160,11 @@
   <div id="footer">
   <div id="search">
     <button type="button" class="close">×</button>
-    <form>
+
+        <form action="http://google.com">
         <input id="searchval" type="search" value="" placeholder="type keyword(s) here" />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+            <input type="submit" class="btn btn-primary">Search</button>
+        </form>
 </div>
   <center>
     <div class="container" style="padding-left:20px;">
