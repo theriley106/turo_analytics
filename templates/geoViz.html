@@ -164,7 +164,7 @@
   <div id="search">
     <button type="button" class="close">×</button>
     <form>
-        <input type="search" value="" placeholder="type keyword(s) here" />
+        <input id="searchval" type="search" value="" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
 </div>
@@ -174,9 +174,9 @@
 
 
 
-<a href="#search" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
-<a href="#search" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
-<a href="#search" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Model';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Make';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Keyword';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>
 
 
     </div>
