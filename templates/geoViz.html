@@ -167,7 +167,7 @@ function makeSearch() {
 
 function keywordSearch() {
     sParameter = document.getElementById("searchval").value;
-    url = "/searchByKeyword/" + encodeURIComponent(sParameter.trim());
+    url = "/search/" + encodeURIComponent(sParameter.trim());
     console.log(window.location.origin + url);
     window.location = url;
 }

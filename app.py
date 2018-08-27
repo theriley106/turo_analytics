@@ -31,16 +31,11 @@ def searchByModel(model):
 	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
-@app.route('/search/<query>', methods=['GET'])
-def search(query):
-	if request.args.get('force_load') != "True" and os.path.isfile("dataset/{}Viz.json".format(query.replace("%20", ""))):
-		DATABASE = json.load(open("dataset/{}Viz.json".format(query.replace("%20", ""))))
-	else:
-		e = turo.search()
-		print query.replace("%20", " ").lower()
-		e.searchByModel(query.replace("%20", " ").lower(), "dataset/{}Viz.json".format(query.replace("%20", "")))
-		DATABASE = json.load(open("dataset/{}Viz.json".format(query.replace("%20", ""))))
-	print len(DATABASE)
+@app.route('/search/<id_val>', methods=['GET'])
+def search(id_val):
+	e = turo.search()
+	f = e.searchID(id_val)
+	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
 
