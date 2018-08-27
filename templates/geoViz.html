@@ -167,7 +167,7 @@ function makeSearch() {
 
 function keywordSearch() {
     sParameter = document.getElementById("searchval").value;
-    url = "/search/" + encodeURIComponent(sParameter.trim());
+    url = "/searchByVehicleID/" + encodeURIComponent(sParameter.trim());
     console.log(window.location.origin + url);
     window.location = url;
 }

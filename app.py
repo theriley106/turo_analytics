@@ -31,10 +31,10 @@ def searchByModel(model):
 	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
-@app.route('/search/<id_val>', methods=['GET'])
-def search(id_val):
+@app.route('/searchByVehicleID/<id_val>', methods=['GET'])
+def searchByVehicleID(id_val):
 	e = turo.search()
-	f = e.searchID(id_val)
+	f = e.searchVehicleID(id_val)
 	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
