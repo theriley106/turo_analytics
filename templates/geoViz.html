@@ -151,7 +151,21 @@
     //Do not include! This prevents the form from submitting for DEMO purposes only!
 
 });
-function myFunction() {
+function modelSearch() {
+    sParameter = document.getElementById("searchval").value;
+    url = "/searchByModel/" + encodeURIComponent(sParameter.trim());
+    console.log(window.location.origin + url);
+    window.location = url;
+}
+
+function makeSearch() {
+    sParameter = document.getElementById("searchval").value;
+    url = "/searchByMake/" + encodeURIComponent(sParameter.trim());
+    console.log(window.location.origin + url);
+    window.location = url;
+}
+
+function modelSearch() {
     sParameter = document.getElementById("searchval").value;
     url = "/searchByModel/" + encodeURIComponent(sParameter.trim());
     console.log(window.location.origin + url);
@@ -178,8 +192,8 @@ function myFunction() {
 
 
 
-<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return myFunction()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
-<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Make';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return modelSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Make';document.getElementById('submissionval').setAttribute('onclick', 'return makeSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
 <a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Keyword';" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>
 
 
