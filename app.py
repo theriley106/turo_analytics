@@ -38,6 +38,13 @@ def searchByVehicleID(id_val):
 	DATABASE = f
 	return render_template("geoViz.html", DATABASE=DATABASE)
 
+@app.route('/searchByOwnerID/<id_val>', methods=['GET'])
+def searchByOwnerID(id_val):
+	e = turo.search()
+	f = e.searchUserID(id_val)
+	DATABASE = f
+	return render_template("geoViz.html", DATABASE=DATABASE)
+
 
 @app.route('/makes/', methods=['GET'])
 def getAllMakes():

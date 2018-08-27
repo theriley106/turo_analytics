@@ -171,6 +171,14 @@ function keywordSearch() {
     console.log(window.location.origin + url);
     window.location = url;
 }
+
+function userSearch() {
+    sParameter = document.getElementById("searchval").value;
+    url = "/searchByOwnerID/" + encodeURIComponent(sParameter.trim());
+    console.log(window.location.origin + url);
+    window.location = url;
+}
+
 </script>
 </head>
 
@@ -199,7 +207,7 @@ function keywordSearch() {
 <a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Vehicle ID';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Vehicle ID</a>
 
 
-<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Keyword';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>
+<a href="#search" onclick="document.getElementById('searchval').placeholder='Search by User ID';document.getElementById('submissionval').setAttribute('onclick', 'return UserSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Owner ID</a>
 
 
 <a href="#search" onclick="document.getElementById('searchval').placeholder='Search by Keyword';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Keyword</a>

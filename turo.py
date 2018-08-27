@@ -136,6 +136,18 @@ class search(object):
 		cursor.close()
 		return allResults
 
+	def searchUserID(self, user_id):
+		allResults = []
+		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+		cursor = conn.cursor()
+		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb WHERE owner_id = {}".format(int(user_id)))
+		for val in cursor.fetchall():
+			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
+		  	allResults.append([b, a])
+		conn.commit()
+		cursor.close()
+		return allResults
+
 	def searchByMake(self, make, save=None):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
