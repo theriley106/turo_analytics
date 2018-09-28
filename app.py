@@ -21,7 +21,7 @@ def geoViz():
 def searchByMake(make):
 	e = turo.search()
 	f = e.searchByMake(make, "dataset/{}Viz.json".format(make))
-	return render_template("geoViz.html", DATABASE=f)
+	return render_template("geoViz.html", DATABASE=f, titleVal="Make: {}".format(make))
 
 @app.route('/searchByModel/<model>', methods=['GET'])
 def searchByModel(model):
@@ -29,21 +29,21 @@ def searchByModel(model):
 	print model.replace("%20", " ").lower()
 	f = e.searchByModel(model.replace("%20", " ").lower(), "dataset/{}Viz.json".format(model.replace("%20", "")))
 	DATABASE = f
-	return render_template("geoViz.html", DATABASE=DATABASE)
+	return render_template("geoViz.html", DATABASE=DATABASE, titleVal="Model: {}".format(model))
 
 @app.route('/searchByVehicleID/<id_val>', methods=['GET'])
 def searchByVehicleID(id_val):
 	e = turo.search()
 	f = e.searchVehicleID(id_val)
 	DATABASE = f
-	return render_template("geoViz.html", DATABASE=DATABASE)
+	return render_template("geoViz.html", DATABASE=DATABASE, titleVal="Vehicle ID: {}".format(id_val))
 
 @app.route('/searchByOwnerID/<id_val>', methods=['GET'])
 def searchByOwnerID(id_val):
 	e = turo.search()
 	f = e.searchUserID(id_val)
 	DATABASE = f
-	return render_template("geoViz.html", DATABASE=DATABASE)
+	return render_template("geoViz.html", DATABASE=DATABASE, titleVal="Owner ID: {}".format(id_val))
 
 
 @app.route('/makes/', methods=['GET'])
