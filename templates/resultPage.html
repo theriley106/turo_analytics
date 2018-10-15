@@ -80,6 +80,7 @@
       <center>
         <h2>{{ result.vehicle_name }} {{ result.vehicle_model }}</h2>
         <h3> ${{ result.rate_daily }} per day in {{ result.location_address }}</h3>
+        <h4>({{ result.location_city }} COL is {{ result.price_diff }}x the national average)</h4>
         </center>
       </div>
       <div class="row">
@@ -110,11 +111,12 @@
           </div>
           </center>
         </div>
+
         <div class="col-sm-3">
-          <div class="well">
+        <div class="well">
           <center>
-            <p><b>Owner Review Count</b></p>
-            <h3><b>{{ result.reviewCount }}</b></h3>
+            <p><b>Vehicle Year</b></p>
+            <h3><b>{{ result.vehicle_year }}</b></h3>
           </div>
           </center>
         </div>
@@ -150,40 +152,34 @@
           </div>
         </div>
 
-           <div class="col-sm-3">
+
+        <div class="col-sm-3">
           <div class="well">
           <center>
-            <p><b>Home Essentials</b></p>
-            <h3><b> store.HomeEssentials </b></h3>
-            </center>
+            <p><b>Owner Review Count</b></p>
+            <h3><b>{{ result.reviewCount }}</b></h3>
           </div>
+          </center>
         </div>
-
+        </div>
 
 
 
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
           <div class="well">
           <center>
-          <p><b>Possible Price Mistakes</b></p>
-        <p><a href=" item "> item </a></p>
+
+          <h4><b>Cost of living in {{ result.location_city }} is {{ result.price_diff }}x the national average</b></h4>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="well">
-          <p><b>Possible Arbitrage Opportunities</b></p>
-
-
-
-
-
-
-
-
-
-          </div>
+        </center>
         </div>
+
+
+
+
+
         <div class="col-sm-4">
           <div class="well">
           <p><b>Rare Items Found in This Store</b></p>
