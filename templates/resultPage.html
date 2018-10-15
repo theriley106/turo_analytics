@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> vehicle_name </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px;}
+    /* Set gray background color and 100% height */
+    .sidenav {
+    	right: 5px;
+    	top: 35px;
+      height: 400px;
+      width: 420px;
+    }
+    body {background-color: #b5b6b7}
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;}
+    }
+  </style>
+
+
+  <script type=text/javascript>
+    $(function() {
+      $('a#calculate').on('click', function() {
+        $.getJSON('/_add_numbers', {
+          a: $('input[name="a"]').val(),
+          b: (' store.Number '),
+        }, function(data) {
+          $("#result").text(data.result);
+        });
+        return false;
+      });
+    });
+  </script>
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Age</a></li>
+        <li><a href="#">Gender</a></li>
+        <li><a href="#">Geo</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+
+    <img src="{{ result.vehicle_image_originalImageUrl }}" style="height:100%; width: 100%;">
+
+    </div>
+    <br>
+
+    <div class="col-sm-9">
+      <div class="well">
+      <center>
+        <h2>{{ result.vehicle_name }} {{ result.vehicle_model }}</h2>
+        <h3> store.Address2 </h3>
+        </center>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Amount of Items Found</b></p>
+            <h3><b> store.ItemCount </b></h3>
+            </center>
+          </div>
+        </div>
+
+<div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Median Household Income</b></p>
+            <h3><b>$ store.Econ </b></h3>
+            </center>
+          </div>
+        </div>
+
+
+        <div class="col-sm-3">
+        <div class="well">
+          <center>
+            <p><b>Inventory Upkeep</b></p>
+            <h3><b> store.InStock %</b></h3>
+          </div>
+          </center>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Store Hours</b></p>
+            <h3><b> store.StoreHours </b></h3>
+          </div>
+          </center>
+        </div>
+
+
+<div class="row">
+
+
+        <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Electronics</b></p>
+            <h3><b> store.Electronics </b></h3>
+          </div>
+          </center>
+        </div>
+
+           <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Cell Phones</b></p>
+            <h3><b> store.CellPhones </b></h3>
+            </center>
+          </div>
+        </div>
+
+           <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Video Games</b></p>
+            <h3><b> store.VideoGames </b></h3>
+            </center>
+          </div>
+        </div>
+
+           <div class="col-sm-3">
+          <div class="well">
+          <center>
+            <p><b>Home Essentials</b></p>
+            <h3><b> store.HomeEssentials </b></h3>
+            </center>
+          </div>
+        </div>
+
+
+
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+          <center>
+          <p><b>Possible Price Mistakes</b></p>
+        <p><a href=" item "> item </a></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+          <p><b>Possible Arbitrage Opportunities</b></p>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+          <p><b>Rare Items Found in This Store</b></p>
+            <p>Text</p>
+            <p>Text</p>
+            <p>Text</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="well" style="height: 90px;">
+          <div class="input-group">
+            <div id="custom-search-input">
+                <div class="col-md-12 input-group">
+    				<div class="input-group">
+
+						<input type="text" size="5" name="a" class="form-control input-lg" placeholder="Inventory Search" style='width: 850px'>
+						   <span class="input-group-btn">
+						        <a class="btn btn-info btn-lg" style='width: 90px; height: 45px;' href="javascript:void();" id="calculate"> <i class="glyphicon glyphicon-search"></i></a>
+						   </span>
+						</div>
+                        </div>
+    				</div>
+    				</div>
+          </div>
+
+
+
+
+
+        </div>
+        <div class="col-sm-4">
+          <div class="well" style="height: 90px;">
+          <h4>
+    <span id="result">No SKU Inputted</span></h4>
+      </div>
+    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
