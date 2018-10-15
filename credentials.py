@@ -5,6 +5,8 @@ SQL_USERNAME_PATH = BASE_PATH.format("sql_username.txt")
 SQL_PASSWORD_PATH = BASE_PATH.format("sql_password.txt")
 
 def get_sql_username():
+	if os.getenv('USERNAME_VAL', None) != None:
+		return os.getenv('USERNAME_VAL', None)
 	if os.path.isfile(SQL_USERNAME_PATH):
 		return open(SQL_USERNAME_PATH).read().split("\n")[0]
 	else:
@@ -14,6 +16,8 @@ def get_sql_username():
 		return credential_val
 
 def get_sql_password():
+	if os.getenv('PASSWORD_VAL', None) != None:
+		return os.getenv('PASSWORD_VAL', None)
 	if os.path.isfile(SQL_PASSWORD_PATH):
 		return open(SQL_PASSWORD_PATH).read().split("\n")[0]
 	else:
