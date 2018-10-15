@@ -5,7 +5,6 @@ import os
 
 app = Flask(__name__, static_url_path='/static')
 
-app.config['DEBUG'] = True
 @app.route('/', methods=['GET'])
 def index():
 	#return "<h1>hello world</h1>"
