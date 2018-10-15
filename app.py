@@ -61,7 +61,7 @@ def getAllMakes():
 	return jsonify(turo.getMakes())
 
 @app.route('/random', methods=['GET'])
-def getRandom():
+def getNew():
 	all_vals = open("randomIDs.txt").read().split("\n")
 	return redirect(url_for('getSingleVehicle', id_val=random.choice(all_vals)))
 
@@ -69,7 +69,11 @@ def getRandom():
 def getSingleVehicle(id_val):
 	info = {}
 	e = turo.search()
-	vals = e.searchSingleID(id_val)[0]
+	vals = e.searchSingleID(id_val)
+	if len(vals) == 0:
+		return redirect(url_for("getNew"))
+	else:
+		vals = vals[0]
 	print vals
 	for i, val in enumerate(vals):
 		info[ALL_KEYS[i]] = val
