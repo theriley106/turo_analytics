@@ -63,6 +63,7 @@ def getAllMakes():
 @app.route('/random', methods=['GET'])
 def getNew():
 	all_vals = open("randomIDs.txt").read().split("\n")
+	#return redirect(url_for('getSingleVehicle', id_val=random.randint(111111,999999)))
 	return redirect(url_for('getSingleVehicle', id_val=random.choice(all_vals)))
 
 @app.route('/vehicle/<id_val>', methods=['GET'])
