@@ -125,6 +125,24 @@ class search(object):
 				allResults.append(val)
 		return allResults
 
+	def getAveragePriceModel(self, vehicle_model):
+		allResults = []
+		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+		cursor = conn.cursor()
+		#cursor.execute("SELECT vehicle_name, rate_daily, location_address, vehicle_image_thumbnails_620x372, vehicle_year FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
+		cursor.execute("SELECT AVG(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper()))
+		val = cursor.fetchone()[0]
+		return round(val, 2)
+
+	def getTotalModel(self, vehicle_model):
+		allResults = []
+		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+		cursor = conn.cursor()
+		#cursor.execute("SELECT vehicle_name, rate_daily, location_address, vehicle_image_thumbnails_620x372, vehicle_year FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
+		cursor.execute("SELECT COUNT(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper()))
+		val = cursor.fetchone()[0]
+		return int(val)
+
 	def searchVehicleID(self, vehicle_id):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
