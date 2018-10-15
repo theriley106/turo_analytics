@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__, static_url_path='/static')
 
-
+app.config['DEBUG'] = True
 @app.route('/', methods=['GET'])
 def index():
 	#return "<h1>hello world</h1>"
@@ -21,6 +21,7 @@ def geoViz():
 def searchByMake(make):
 	e = turo.search()
 	f = e.searchByMake(make, "dataset/{}Viz.json".format(make))
+	print f
 	return render_template("geoViz.html", DATABASE=f, titleVal="Make: {}".format(make))
 
 @app.route('/searchByModel/<model>', methods=['GET'])
@@ -29,6 +30,7 @@ def searchByModel(model):
 	print model.replace("%20", " ").lower()
 	f = e.searchByModel(model.replace("%20", " ").lower(), "dataset/{}Viz.json".format(model.replace("%20", "")))
 	DATABASE = f
+	print f
 	return render_template("geoViz.html", DATABASE=DATABASE, titleVal="Model: {}".format(model))
 
 @app.route('/searchByVehicleID/<id_val>', methods=['GET'])
@@ -36,6 +38,7 @@ def searchByVehicleID(id_val):
 	e = turo.search()
 	f = e.searchVehicleID(id_val)
 	DATABASE = f
+	print f
 	return render_template("geoViz.html", DATABASE=DATABASE, titleVal="Vehicle ID: {}".format(id_val))
 
 @app.route('/searchByOwnerID/<id_val>', methods=['GET'])
@@ -50,11 +53,15 @@ def searchByOwnerID(id_val):
 def getAllMakes():
 	return jsonify(turo.getMakes())
 
+@app.route('/vehicle/<id_val>', methods=['GET'])
+def getSingleVehicle(id_val):
+	return render_template("resultPage.html")
+
 @app.route('/cool/', methods=['GET'])
 def cool():
 	return render_template("cool2.html")
 
 if __name__ == '__main__':
-	app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
+	app.run(host='127.0.0.1', port=5000, threaded=True)
 
 
