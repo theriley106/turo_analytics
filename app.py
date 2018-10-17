@@ -86,8 +86,12 @@ def getSingleVehicle(id_val):
 	info['avg_price'] = e.getAveragePriceModel(info['vehicle_model'])
 	info['total_count'] = e.getTotalModel(info['vehicle_model'])
 	info['price_diff'] = SocioEconomics.Status(extract_zip(info['location_address']))
+	tempInfo = []
+	for i in range(10):
+		tempInfo.append({"name": 'test{}'.format(i), "count": random.randint(1,100)})
 	info = clean_data(info)
-	return render_template("resultPage.html", result=info)
+	return render_template("resultPage.html", result=info, newItems=tempInfo)
+
 
 @app.route('/cool/', methods=['GET'])
 def cool():

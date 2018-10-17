@@ -19,8 +19,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
     indexLabel: "{label} - #percent%",
     toolTipContent: "<b>{label}:</b> {y} (#percent%)",
     dataPoints: [
-    {% for Data in DATABASE %}
-      { y: {{ Data.StackAdvice.Occurances }}, label: "{{ Data.Name }}" },
+    {% for Data in dbVal %}
+      { y: {{ Data.count }}, label: "{{ Data.name }}" },
     {% endfor %}
     ]
   }]
