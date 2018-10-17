@@ -147,13 +147,21 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
 		for val in cursor.fetchall():
+			all_vals = [x.strip() for x in str(val[0]).split(",")]
+			vehicle_model = all_vals.pop(-1).replace(")", "")
+			vehicle_name = all_vals.pop(-1).replace(")", "")
+			vehicle_id = all_vals.pop(-1).replace(")", "")
+
+			val = ", ".join(all_vals)
+			print val
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a])
+		  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
 		conn.commit()
 		cursor.close()
 		return allResults
+
 
 	def searchSingleID(self, vehicle_id):
 		allResults = []
@@ -171,10 +179,17 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb WHERE owner_id = {}".format(int(user_id)))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE owner_id = {}".format(int(user_id)))
 		for val in cursor.fetchall():
+			all_vals = [x.strip() for x in str(val[0]).split(",")]
+			vehicle_model = all_vals.pop(-1).replace(")", "")
+			vehicle_name = all_vals.pop(-1).replace(")", "")
+			vehicle_id = all_vals.pop(-1).replace(")", "")
+
+			val = ", ".join(all_vals)
+			print val
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a])
+		  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
 		conn.commit()
 		cursor.close()
 		return allResults
@@ -183,10 +198,20 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb WHERE vehicle_make = '{}'".format(make.title()))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(make.title()))
 		for val in cursor.fetchall():
-			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a])
+			all_vals = [x.strip() for x in str(val[0]).split(",")]
+			vehicle_model = all_vals.pop(-1).replace(")", "").replace('"', '')
+			vehicle_name = all_vals.pop(-1).replace(")", "").replace('"', '')
+			vehicle_id = all_vals.pop(-1).replace(")", "")
+
+			val = ", ".join(all_vals)
+			print val
+			try:
+				a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
+			  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
+			except:
+				pass
 		conn.commit()
 		cursor.close()
 		return allResults
@@ -195,10 +220,17 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude) FROM turodb")
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb")
 		for val in cursor.fetchall():
+			all_vals = [x.strip() for x in str(val[0]).split(",")]
+			vehicle_model = all_vals.pop(-1).replace(")", "")
+			vehicle_name = all_vals.pop(-1).replace(")", "")
+			vehicle_id = all_vals.pop(-1).replace(")", "")
+
+			val = ", ".join(all_vals)
+			print val
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a])
+		  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
 		conn.commit()
 		cursor.close()
 		return allResults
@@ -207,13 +239,21 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT location_longitude, location_latitude FROM turodb WHERE vehicle_make = '{}'".format(model))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(model))
 		for val in cursor.fetchall():
+			all_vals = [x.strip() for x in str(val[0]).split(",")]
+			vehicle_model = all_vals.pop(-1).replace(")", "")
+			vehicle_name = all_vals.pop(-1).replace(")", "")
+			vehicle_id = all_vals.pop(-1).replace(")", "")
+
+			val = ", ".join(all_vals)
+			print val
 			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a])
+		  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
 		conn.commit()
 		cursor.close()
 		return allResults
+
 
 	def searchByModelYear(self, model, year, save=None):
 		allResults = []

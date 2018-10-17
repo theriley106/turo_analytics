@@ -235,6 +235,9 @@ var geoJson = [
     "geometry": { "type": "Point", "coordinates": [{{ info[1] }}, {{ info[0] }}]},
     "properties": {
         "marker-color": "#ff8888",
+        "vehicle_id": "{{ info[2] }}",
+        "vehicle_name": "{{ info[3] }}",
+        "vehicle_model": "{{ info[4] }}"
     }
 },
 
@@ -248,8 +251,7 @@ myLayer.on('layeradd', function(e) {
         feature = marker.feature;
 
     // Create custom popup content
-    var popupContent =  '<a target="_blank" class="popup" href="' + "" + '">' +
-                            '<img src="' + "feature.properties.image" + '" />' +
+    var popupContent =  '<a target="_blank" class="popup" href="../vehicle/' + feature.properties.vehicle_id + '">' + feature.properties.vehicle_name + " " + feature.properties.vehicle_model +
                         '</a>';
     /*var popupContent =  '<a target="_blank" class="popup" href="' + "" + '">' +
                             '<img src="' + feature.properties.image + '" />' +

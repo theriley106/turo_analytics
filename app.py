@@ -1,3 +1,7 @@
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 from flask import Flask, render_template, request, url_for, redirect, Markup, jsonify, make_response, send_from_directory, session
 import json
 import turo
