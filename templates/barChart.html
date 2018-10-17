@@ -1,0 +1,90 @@
+<style>
+.verticaltext_content {
+  position: relative;
+  transform: rotate(-90deg);
+  right:90px;   //These three positions need adjusting
+  bottom:150px; //based on your actual chart size
+  width:200px;
+}
+
+section {
+  height: 50%;
+}
+
+</style>
+<iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100px; width: 40%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+<section>
+  <canvas id="densityChart" height=80%></canvas>
+  </section>
+    <script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+    <script>
+      var densityCanvas = document.getElementById("densityChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 25;
+
+var densityData = {
+  label: 'Pricing Distribution',
+  data: [{% for Data in dbVal %}
+                {{ Data.count }},
+                {% endfor %}],
+  backgroundColor: [
+  {% for Data in dbVal %}
+
+    'rgba(0, 99, 132, 0.6)',
+                {% endfor %}
+  ],
+  borderColor: [
+
+    {% for Data in dbVal %}
+
+    'rgba(0, 99, 132, 1)',
+                {% endfor %}
+  ],
+  borderWidth: 2,
+  hoverBorderWidth: 0
+};
+
+var chartOptions = {
+  responsive:true,
+
+scales: {
+yAxes: [
+  {
+      id: 'y-axis-1',
+      display: true,
+      position: 'left',
+      ticks: {
+          callback: function(value, index, values) {
+              return value;
+          }
+      },
+      scaleLabel:{
+          display: true,
+          labelString: 'Daily Rental Price',
+          fontColor: "#546372"
+      }
+  }
+]
+}
+ };
+
+var barChart = new Chart(densityCanvas, {
+
+  type: 'bar',
+  data: {
+    labels: [{% for info in dbVal %}
+                "{{ info.name }}",
+                {% endfor %}],
+    datasets: [densityData],
+  },
+  options: chartOptions
+});
+      //# sourceURL=pen.js
+    </script>
+<footer>
