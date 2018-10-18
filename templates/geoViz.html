@@ -188,11 +188,9 @@ function userSearch() {
   <div id="footer">
   <div id="search">
     <button type="button" class="close">×</button>
-
         <input id="searchval" type="search" value="" placeholder="type keyword(s) here" />
             <button style="padding: 14px 18px;
     font-size: 20px;" id='submissionval' onclick="alert('this works properly')" class="btn btn-primary">Search</button>
-        </form>
 </div>
   <center>
     <div class="container" style="padding-left:20px;">
@@ -200,14 +198,16 @@ function userSearch() {
 
 
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return modelSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Make';document.getElementById('submissionval').setAttribute('onclick', 'return makeSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return modelSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
 
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Vehicle ID';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Vehicle ID</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Make';document.getElementById('submissionval').setAttribute('onclick', 'return makeSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Make</a>
 
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Owner ID';document.getElementById('submissionval').setAttribute('onclick', 'return userSearch()');" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Owner ID</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Vehicle ID';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Vehicle ID</a>
+
+
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Owner ID';document.getElementById('submissionval').setAttribute('onclick', 'return userSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Owner ID</a>
 
 
 
@@ -267,6 +267,19 @@ myLayer.on('layeradd', function(e) {
 
 // Add features to the map
 myLayer.setGeoJSON(geoJson);
+  // Get the input field
+var input = document.getElementById("searchval");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Cancel the default action, if needed
+  event.preventDefault();
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Trigger the button element with a click
+    document.getElementById("submissionval").click();
+  }
+});
   </script>
 </body>
 </html>
