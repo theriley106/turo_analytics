@@ -193,24 +193,24 @@ function userSearch() {
     font-size: 20px;" id='submissionval' onclick="alert('this works properly')" class="btn btn-primary">Search</button>
 </div>
   <center>
-    <div class="container" style="padding-left:20px;">
+    <div class="container" style="padding-left:20px;width:100%;">
 
 
 
 
-<a href="/random" class="btn btn-primary">Random Vehicle</a>
+<a target="_blank" href="/random" class="btn btn-success">View Random Vehicle</a>
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Manufacturer';document.getElementById('submissionval').setAttribute('onclick', 'return makeSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Manufacturer</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Manufacturer';document.getElementById('submissionval').setAttribute('onclick', 'return makeSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Search By Manufacturer</a>
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return modelSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Model</a>
-
-
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Vehicle ID';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Vehicle ID</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Model';document.getElementById('submissionval').setAttribute('onclick', 'return modelSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Search By Model</a>
 
 
-<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Owner ID';document.getElementById('submissionval').setAttribute('onclick', 'return userSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Filter By Owner ID</a>
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Vehicle ID';document.getElementById('submissionval').setAttribute('onclick', 'return keywordSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Search By Vehicle ID</a>
 
 
+<a href="#search" onclick="document.getElementById('searchval').value = '';document.getElementById('searchval').placeholder='Search by Owner ID';document.getElementById('submissionval').setAttribute('onclick', 'return userSearch()');document.getElementById('searchval').focus();document.getElementById('searchval').select();" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Search By Owner ID</a>
+
+<a target="_blank" href="https://github.com/theriley106/turo_analytics" class="btn btn-success">View this Project on Github</a>
 
 
     </div>
