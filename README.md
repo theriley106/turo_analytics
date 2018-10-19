@@ -18,54 +18,7 @@ To create the dataset I needed to pull information on every vehicle listing whil
 
 <i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset</h3></i>
 
-This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains the following information for each vehicle.
-
-### Valid Search Parameters
-
-| Parameters | (cont.) |
-| --- | --- |
-| vehicle_image_originalImageUrl | rating |
-| reviewCount | owner_image_thumbnails_225x225 |
-| owner_name | location_precision_accuracy |
-| renterTripsTaken | vehicle_name |
-| location_addressLines_0 | location_timeZone |
-| vehicle_image_resizableUrlTemplate | rate_monthly |
-| images_0_thumbnails_100x60 | distanceLabel |
-| location_locationSource | vehicle_marketCountry |
-| rate_weekly | rate_averageDailyPrice |
-| owner_id | vehicle_listingCreatedTime |
-| location_address | vehicle_marketCurrency_decimalPlaces |
-| images_0_resizableUrlTemplate | owner_image_id |
-| vehicle_registration | vehicle_marketCurrency_currencyCode |
-| vehicle_image_thumbnails_170x125 | images_0_thumbnails_170x125 |
-| responseTime | images_0_id |
-| businessClass | rate_averageDailyPriceWithCurrency_currencyCode |
-| vehicle_marketCurrency_symbol | images_0_thumbnails_574x343 |
-| distanceWithUnit_unit | owner_lastName |
-| vehicle_type | rate_averageDailyPriceWithCurrency_amount |
-| owner_image_verified | vehicle_image_verified |
-| vehicle_image_thumbnails_620x372 | location_city |
-| newListing | vehicle_id |
-| distance | location_country |
-| images_0_thumbnails_620x372 | vehicle_image_thumbnails_50x30 |
-| owner_image_resizableUrlTemplate | location_precision_level |
-| distanceWithUnit_scalar | owner_image_thumbnails_84x84 |
-| location_state | location_longitude |
-| vehicle_trim | owner_image_placeholder |
-| images_0_thumbnails_170x102 | vehicle_make |
-| vehicle_automaticTransmission | images_0_verified |
-| vehicle_image_thumbnails_100x60 | images_0_originalImageUrl |
-| distanceWithUnit_unlimited | images_0_thumbnails_50x30 |
-| freeDeliveryPromotion | owner_image_thumbnails_32x32 |
-| vehicle_image_thumbnails_574x343 | vehicle_url |
-| vehicle_image_id | rentableFromSearchedAirport |
-| owner_image_thumbnails_300x300 | vehicle_marketCurrency_defaultFractionDigits |
-| location_latitude | responseRate |
-| owner_firstName | vehicle_image_placeholder |
-| vehicle_image_thumbnails_170x102 | owner_image_originalImageUrl |
-| instantBookDisplayed | rate_daily |
-| vehicle_model | deliveryLabel |
-| images_0_placeholder | vehicle_year |
+This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points for each vehicle.</a>
 
 ## Web Application
 
@@ -154,7 +107,7 @@ Response:
 }
 ```
 
-```
+```javascript
 Endpoint: /api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year
 
 Response:

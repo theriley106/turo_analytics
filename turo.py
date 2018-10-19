@@ -329,6 +329,9 @@ def makeQuery(sqlQuery, params=None):
 	return allResults, True
 
 if __name__ == '__main__':
+	sqlQuery = raw_input("Query: ")
+	print makeQuery(sqlQuery)
+	'''
 	info = {}
 	allResults = []
 	new_vals = []
@@ -343,7 +346,7 @@ if __name__ == '__main__':
 			a, b = v
 			new_vals.append({"model": val, "count": b, "average": round(a, 2)})
 	print json.dumps(new_vals)
-	pass
+	pass'''
 
 	'''with open('airports.json', 'w') as outfile:
 		json.dump(returnAirports(), outfile)'''
