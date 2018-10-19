@@ -188,7 +188,40 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ## API
 
-<h3 align="center">GET | /api/?filter={Column Filter}&keyword={Keyword}&values={Column1},{Column2}</h3>
+<h3 align="center">/api/?filter={Column Filter}&keyword={Keyword}&values={Column1},{Column2}&limit={int Val}</h3>
+
+### Examples
+
+<h4 align="center">GET /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h3>
+
+```javascript
+{
+  "data": [
+    {
+      "rate_daily": 252.0,
+      "vehicle_model": "Model S"
+    },
+    {
+      "rate_daily": 140.0,
+      "vehicle_model": "Model 3"
+    },
+    {
+      "rate_daily": 116.0,
+      "vehicle_model": "Model S"
+    },
+    {
+      "rate_daily": 430.0,
+      "vehicle_model": "Model X"
+    },
+    {
+      "rate_daily": 574.0,
+      "vehicle_model": "Model X"
+    }
+  ],
+  "success": true
+}
+```
+
 
 # Model S *Used* Market Prices
 | Model   | Market Price   |
