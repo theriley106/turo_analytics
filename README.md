@@ -94,9 +94,10 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 
 ### Examples:
 
-<h4 align="center">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h4>
-
 ```javascript
+Endpoint: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
+
+Response:
 {
   "data": [
     {
@@ -124,9 +125,10 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 }
 ```
 
-<h4 align="center">/api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3</h4>
-
 ```javascript
+Endpoint: /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
+
+Response:
 {
   "data": [
     {
@@ -152,9 +154,10 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 }
 ```
 
-<h4 align="center">/api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year</h4>
-
 ```
+Endpoint: /api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year
+
+Response:
 {
   "data": [
     {
@@ -170,9 +173,10 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 }
 ```
 
-<h4 align="center">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10</h4>
-
 ```javascript
+Endpoint: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
+
+Response:
 {
   "data": [
     {
