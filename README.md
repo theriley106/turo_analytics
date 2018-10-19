@@ -11,7 +11,7 @@ To create the dataset I needed to pull information on every vehicle listing whil
 <p align="center">
   <img src="src/searchLongLat.png"/>
 </p>
-<i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset</h3></i>
+<i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset (w/ Default Radius)</h3></i>
 
 ## Dataset
 
