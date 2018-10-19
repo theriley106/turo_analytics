@@ -88,7 +88,6 @@ def getSingleVehicle(id_val):
 		return redirect(url_for("getNew"))
 	else:
 		vals = vals[0]
-	print vals
 	for i, val in enumerate(vals):
 		info[ALL_KEYS[i]] = val
 	info['avg_price'] = e.getAveragePriceModel(info['vehicle_model'])

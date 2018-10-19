@@ -247,17 +247,21 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(model.title()))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_model = '{}'".format(model.title()))
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
-			vehicle_model = all_vals.pop(-1).replace(")", "")
-			vehicle_name = all_vals.pop(-1).replace(")", "")
+			vehicle_model = all_vals.pop(-1).replace(")", "").replace('"', '')
+			vehicle_name = all_vals.pop(-1).replace(")", "").replace('"', '')
 			vehicle_id = all_vals.pop(-1).replace(")", "")
 
 			val = ", ".join(all_vals)
 			print val
-			a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
-		  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
+			try:
+				a, b = re.findall(r"[-+]?\d*\.\d+|[-+]?\d+", str(val))
+			  	allResults.append([b, a, vehicle_id, vehicle_name, vehicle_model])
+			except Exception as exp:
+				print exp
+				pass
 		conn.commit()
 		cursor.close()
 		return allResults
