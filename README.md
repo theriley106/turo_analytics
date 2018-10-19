@@ -22,6 +22,95 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ### Example Response
 
+| **Paramater** |
+| --- |
+| rating |
+| owner_image_thumbnails_225x225 |
+| location_precision_accuracy |
+| vehicle_name |
+| location_timeZone |
+| rate_monthly |
+| distanceLabel |
+| vehicle_marketCountry |
+| rate_averageDailyPrice |
+| vehicle_listingCreatedTime |
+| vehicle_marketCurrency_decimalPlaces |
+| owner_image_id |
+| vehicle_marketCurrency_currencyCode |
+| images_0_thumbnails_170x125 |
+| images_0_id |
+| rate_averageDailyPriceWithCurrency_currencyCode |
+| images_0_thumbnails_574x343 |
+| owner_lastName |
+| rate_averageDailyPriceWithCurrency_amount |
+| vehicle_image_verified |
+| location_city |
+| vehicle_id |
+| location_country |
+| vehicle_image_thumbnails_50x30 |
+| location_precision_level |
+| owner_image_thumbnails_84x84 |
+| location_longitude |
+| owner_image_placeholder |
+| vehicle_make |
+| images_0_verified |
+| images_0_originalImageUrl |
+| images_0_thumbnails_50x30 |
+| owner_image_thumbnails_32x32 |
+| vehicle_url |
+| rentableFromSearchedAirport |
+| vehicle_marketCurrency_defaultFractionDigits |
+| responseRate |
+| vehicle_image_placeholder |
+| owner_image_originalImageUrl |
+| rate_daily |
+| deliveryLabel |
+| vehicle_year |
+| vehicle_image_originalImageUrl |
+| reviewCount |
+| owner_name |
+| renterTripsTaken |
+| location_addressLines_0 |
+| vehicle_image_resizableUrlTemplate |
+| images_0_thumbnails_100x60 |
+| location_locationSource |
+| rate_weekly |
+| owner_id |
+| location_address |
+| images_0_resizableUrlTemplate |
+| vehicle_registration |
+| vehicle_image_thumbnails_170x125 |
+| responseTime |
+| businessClass |
+| vehicle_marketCurrency_symbol |
+| distanceWithUnit_unit |
+| vehicle_type |
+| owner_image_verified |
+| vehicle_image_thumbnails_620x372 |
+| newListing |
+| distance |
+| images_0_thumbnails_620x372 |
+| owner_image_resizableUrlTemplate |
+| distanceWithUnit_scalar |
+| location_state |
+| vehicle_trim |
+| images_0_thumbnails_170x102 |
+| vehicle_automaticTransmission |
+| vehicle_image_thumbnails_100x60 |
+| distanceWithUnit_unlimited |
+| freeDeliveryPromotion |
+| vehicle_image_thumbnails_574x343 |
+| vehicle_image_id |
+| owner_image_thumbnails_300x300 |
+| location_latitude |
+| owner_firstName |
+| vehicle_image_thumbnails_170x102 |
+| instantBookDisplayed |
+| vehicle_model |
+| images_0_placeholder |
+
+
+
 ```javascript
 {
     "distance": 17.0,
@@ -185,6 +274,24 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 }
 ```
 
+## Web Application
+
+<p align="center">
+  <img src="src/mainPage.png"/>
+</p>
+<i><h3 align="center">Main Page</h3></i>
+
+
+<p align="center">
+  <img src="src/searchByMake.png"/>
+</p>
+<i><h3 align="center">Search By Make: Tesla</h3></i>
+
+<p align="center">
+  <img src="src/specific.png"/>
+</p>
+<i><h3 align="center">Search Results</h3></i>
+
 
 ## API
 
@@ -252,7 +359,7 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 }
 ```
 
-<h4 align="center">/api/?filter=vehicle_id&keyword=412367&values=*&limit=1</h4>
+<h4 align="center">/api/?filter=vehicle_id&keyword=412367&values=all&limit=1</h4>
 
 ```
 {
@@ -347,60 +454,6 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
   "success": true
 }
 ```
-
-
-# Model S *Used* Market Prices
-| Model   | Market Price   |
-| -------------------- |----------:|
-|2016.5 AWD 70D | $64,688.71|
-|RWD 85 kWh Battery | $59,365.30|
-|2016.5 4dr Sedan AWD 60D | $71,496.00|
-|90D AWD | $85,877.00|
-|AWD 90D Dual Motor | $78,599.00|
-|75 RWD | $68,713.08|
-|P85D - NAV - SNRF - RRVW | $78,995.00|
-|Performance | $54,251.15|
-|75D AWD | $78,689.00|
-|4dr Sedan Performance | $51,747.00|
-|AWD P85D Performance | $71,238.36|
-|RWD 70 kWh Battery | $59,738.50|
-|2016.5 AWD 90D | $75,068.14|
-|P100D AWD | $109,993.00|
-|2016.5 4dr Sedan RWD 60 | $61,329.00|
-|Sedan | $46,943.38|
-|P85D 1 Owner Clean Carfax Autopilot | $76,888.00|
-|2016.5 AWD P90D | $94,989.67|
-|P85D | $65,309.50|
-|4dr Sedan P85D | $65,995.00|
-|2016.5 RWD 75 kWh Battery | $66,626.33|
-|2016.5 4dr Sedan AWD P100D | $115,561.33|
-|100D AWD | $81,497.50|
-|2016.5 AWD 75D | $70,492.40|
-|4dr Sedan | $46,988.00|
-|AWD 70D Dual Motor | $61,823.19|
-|4dr Sedan Signature Performance | $48,500.00|
-|RWD 60 kWh Battery | $50,832.86|
-|4dr Sedan 85 kWh Battery | $52,683.95|
-|4dr Sedan Signature | $49,151.60|
-|AWD 85D Dual Motor | $64,942.06|
-
-## Web Application
-
-<p align="center">
-  <img src="src/mainPage.png"/>
-</p>
-<i><h3 align="center">Main Page</h3></i>
-
-
-<p align="center">
-  <img src="src/searchByMake.png"/>
-</p>
-<i><h3 align="center">Search By Make: Tesla</h3></i>
-
-<p align="center">
-  <img src="src/specific.png"/>
-</p>
-<i><h3 align="center">Search Results</h3></i>
 
 ## Misc Visualizations
 
