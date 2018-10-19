@@ -188,6 +188,8 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ## API
 
+<h3 align="center">GET | /api/?filter={Column Filter}&keyword={Keyword}&values={Column1},{Column2}</h3>
+
 # Model S *Used* Market Prices
 | Model   | Market Price   |
 | -------------------- |----------:|
