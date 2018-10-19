@@ -118,7 +118,7 @@ def apiSearch():
 	if limitVal != None:
 		try:
 			tempVal = int(limitVal)
-			data = data[tempVal]
+			data = data[:tempVal]
 		except:
 			pass
 	return jsonify({"success": success, "data": data})
