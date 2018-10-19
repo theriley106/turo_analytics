@@ -22,7 +22,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ### Valid Search Parameters
 
-
+| --- |
 | rating |
 | owner_image_thumbnails_225x225 |
 | location_precision_accuracy |
@@ -248,7 +248,8 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
     }
   ],
   "success": true
-}```
+}
+```
 
 ## Misc Visualizations
 
