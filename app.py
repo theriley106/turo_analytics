@@ -105,6 +105,7 @@ def apiSearch():
 	filterType = request.args.get("filter")
 	filterVal = request.args.get("keyword")
 	paramValues = request.args.get("values")
+	limitVal = request.args.get("limit")
 	if paramValues != None:
 		paramValues = [x.strip() for x in paramValues.split(",")]
 	query += ",".join(paramValues)
@@ -114,6 +115,12 @@ def apiSearch():
 	else:
 		query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
 	data, success = turo.makeQuery(query, params=paramValues)
+	if limitVal != None:
+		try:
+			tempVal = int(limitVal)
+			data = data[tempVal]
+		except:
+			pass
 	return jsonify({"success": success, "data": data})
 
 @app.route('/cool/', methods=['GET'])
