@@ -186,9 +186,11 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 ```
 
 
-## API
+## REST API [GET/POST both supported]
 
-<h3 align="center">[GET/POST] /api/?filter={}&keyword={}&values={},{}&limit={}</h3>
+<h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
+
+I wrote the API to make it easier to interact with the dataset.  It's a simple Flask-Based REST API that will return specified vehicle paramaters based on the filters in the URL parameters.
 
 ### Examples:
 
