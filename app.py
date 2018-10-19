@@ -109,13 +109,21 @@ def apiSearch():
 	if limitVal == None:
 		limitVal = 500
 	if paramValues != None:
-		paramValues = [x.strip() for x in paramValues.split(",")]
+		if "*" in paramValues or "all" in paramValues:
+			paramValues = ALL_KEYS
+		else:
+			paramValues = [x.strip() for x in paramValues.split(",")]
+
 	query += ",".join(paramValues)
 	query += " FROM turodb "
 	if filterType == None or filterVal == None:
 		query = query.strip()
 	else:
-		query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
+		try:
+			int(filterVal)
+			query += "WHERE {} = {}".format(filterType, filterVal)
+		except:
+			query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
 	query += " LIMIT {}".format(int(limitVal))
 	data, success = turo.makeQuery(query, params=paramValues)
 	return jsonify({"success": success, "data": data})
