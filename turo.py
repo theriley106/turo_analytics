@@ -239,7 +239,7 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(model))
+		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(model.title()))
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
 			vehicle_model = all_vals.pop(-1).replace(")", "")
@@ -272,7 +272,22 @@ class search(object):
 
 
 if __name__ == '__main__':
+	info = {}
+	allResults = []
+	new_vals = []
+	conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+	cursor = conn.cursor()
+	cursor.execute("SELECT DISTINCT vehicle_make FROM turodb")
+	for val in cursor.fetchall():
+		allResults.append(val[0])
+	for val in allResults:
+		cursor.execute("SELECT AVG(rate_daily), COUNT(rate_daily) FROM turodb WHERE vehicle_make = '{}'".format(val))
+		for v in cursor.fetchall():
+			a, b = v
+			new_vals.append({"model": val, "count": b, "average": round(a, 2)})
+	print json.dumps(new_vals)
 	pass
+
 	'''with open('airports.json', 'w') as outfile:
 		json.dump(returnAirports(), outfile)'''
 	'''for val in a.keyword('bugatti'):

@@ -1,0 +1,45 @@
+<head>
+    <title>/r/SAT Flair Scores</title>
+    <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="bar-chart-grouped" width="600" height="200"></canvas>
+    <script>
+
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: [{% for info in modelInfo %}"{{ info.model }}",{% endfor %}],
+      datasets: [
+        {
+          label: "Price in USD",
+          backgroundColor: "#3e95cd",
+          data: [{% for info in modelInfo %}"{{ info.average }}",{% endfor %}]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Turo Average Rental Price By Model'
+      },
+      scales: {
+    xAxes: [{
+      ticks: {
+        autoSkip: false
+      }
+    }]
+  }
+    }
+});
+
+</script>

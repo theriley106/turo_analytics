@@ -21,11 +21,6 @@
     }
     body {background-color: #b5b6b7}
 
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;}
-    }
-
   </style>
 
 
@@ -46,129 +41,44 @@
 
 
 </head>
-<body style="background-color:black; background-repeat: no-repeat; background-size: 100% 100%;">
-<nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Age</a></li>
-        <li><a href="#">Gender</a></li>
-        <li><a href="#">Geo</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav hidden-xs">
-
-    <img src="{{ result.vehicle_image_originalImageUrl }}" style="height:390px; width: 400px;">
-
-    </div>
-    <br>
-
-    <div class="col-sm-9">
-      <div class="well">
-      <center>
-        <h2>{{ result.vehicle_name }} {{ result.vehicle_model }}</h2>
-        <h3> ${{ result.rate_daily }} per day in {{ result.location_address }}</h3>
-        <h4>({{ result.location_city }} COL is {{ result.price_diff }}x the national average)</h4>
-        </center>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Model</b></p>
-            <h3><b> {{ result.vehicle_model }} </b></h3>
-            </center>
-          </div>
-        </div>
-
-<div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Make</b></p>
-            <h3><b>{{ result.vehicle_make }}</b></h3>
-            </center>
-          </div>
-        </div>
-
-
-        <div class="col-sm-3">
-        <div class="well">
-          <center>
-            <p><b>Trim</b></p>
-            <h3><b>{{ result.vehicle_trim }}</b></h3>
-          </div>
-          </center>
-        </div>
-
-        <div class="col-sm-3">
-        <div class="well">
-          <center>
-            <p><b>Vehicle Year</b></p>
-            <h3><b>{{ result.vehicle_year }}</b></h3>
-          </div>
-          </center>
-        </div>
-
+<body style="background-color:black; background-size: 100% 100%;">
+<div class="container">
 
 <div class="row">
-
-
         <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>{{ result.vehicle_make }} {{ result.vehicle_model }}<br>Average Turo Price</b></p>
-            <h3><b>${{ result.avg_price }}</b></h3>
-          </div>
-          </center>
-        </div>
-
-           <div class="col-sm-3">
-          <div class="well">
+<div class="well">
           <center>
             <p><b>Total Turo Listings for <br>{{ result.vehicle_make }} {{ result.vehicle_model }} Vehicles</b></p>
             <h3><b>{{ result.total_count }}</b></h3>
             </center>
           </div>
-        </div>
+      </div>
+        <div class="col-sm-5 well">
 
-           <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Total Trips Taken</b></p>
-            <h3><b>{{ result.renterTripsTaken }}</b></h3>
-            </center>
-          </div>
-        </div>
-
-
-        <div class="col-sm-3">
-          <div class="well">
-          <center>
-            <p><b>Owner Review Count</b></p>
-            <h3><b>{{ result.reviewCount }}</b></h3>
-          </div>
+        <center>
+          <h2>{{ result.vehicle_name }} {{ result.vehicle_model }}</h2>
+          <h3> ${{ result.rate_daily }} per day in {{ result.location_address }}</h3>
+          <h4>({{ result.location_city }} COL is {{ result.price_diff }}x the national average)</h4>
           </center>
         </div>
+
+        <div class="col-sm-3">
+            <div class="well">
+          <center>
+            <p><b>{{ result.vehicle_make }} {{ result.vehicle_model }}<br>Average Turo Price</b></p>
+            <h3><b>${{ result.avg_price }}</b></h3>
+          </center>
         </div>
+      </div>
+
+
+</div>
+</div>
 
 
 
-{% with dbVal=newItems %}
-{% include 'barChart.html' %}
+{% with modelInfo=modelInfo %}
+{% include 'bc2.html' %}
 {% endwith %}
 
 
