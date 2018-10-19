@@ -252,8 +252,8 @@ myLayer.on('layeradd', function(e) {
         feature = marker.feature;
 
     // Create custom popup content
-    var popupContent =  '<a target="_blank" class="popup" href="../vehicle/' + feature.properties.vehicle_id + '">' + feature.properties.vehicle_name + " " + feature.properties.vehicle_model +
-                        '</a>';
+    var popupContent =  '<center><a target="_blank" class="popup" href="../vehicle/' + feature.properties.vehicle_id + '">' + feature.properties.vehicle_name + " " + feature.properties.vehicle_model +
+                        '</a></center>';
     /*var popupContent =  '<a target="_blank" class="popup" href="' + "" + '">' +
                             '<img src="' + feature.properties.image + '" />' +
                             feature.properties.year + " " + feature.properties.make + " " + feature.properties.model +
