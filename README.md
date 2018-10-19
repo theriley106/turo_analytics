@@ -22,7 +22,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ### Valid Search Parameters
 
-| Parameters | Parameters (cont) |
+| Parameters | (cont.) |
 | --- | --- |
 | vehicle_image_originalImageUrl | rating |
 | reviewCount | owner_image_thumbnails_225x225 |
@@ -212,6 +212,10 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 
 ## Misc Visualizations
 
+
+## Interesting Findings (Info is current to 07/08/2018)
+
+- Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
 
 **PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)
 
