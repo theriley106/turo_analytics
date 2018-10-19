@@ -25,7 +25,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 | Parameters |
 | --- |
 | rating |
-| owner_image_thumbnails_225x225 |
+| owner_image_thumbnails_225x225 | owner_image_thumbnails_225x225 |
 | location_precision_accuracy |
 | vehicle_name |
 | location_timeZone |
