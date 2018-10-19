@@ -15,16 +15,16 @@
     <canvas id="bar-chart-grouped" width="600" height="200"></canvas>
     <script>
 
-new Chart(document.getElementById("bar-chart-grouped"), {
+var myChart = new Chart(document.getElementById("bar-chart-grouped"), {
     type: 'bar',
     data: {
       labels: [{% for info in modelInfo %}"{{ info.model }}",{% endfor %}],
       datasets: [
         {
           label: "Price in USD",
-          backgroundColor: "#3e95cd",
+          backgroundColor: [{% for info in modelInfo %}"#3e95cd",{% endfor %}],
           data: [{% for info in modelInfo %}"{{ info.average }}",{% endfor %}]
-        }
+        },
       ]
     },
     options: {
@@ -41,5 +41,9 @@ new Chart(document.getElementById("bar-chart-grouped"), {
   }
     }
 });
+
+// change color of first bar
+myChart.data.datasets[0].backgroundColor[{{myIndex}}] = "#FF0000";
+myChart.update();
 
 </script>

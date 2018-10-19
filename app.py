@@ -98,7 +98,7 @@ def getSingleVehicle(id_val):
 	for i in range(10):
 		tempInfo.append({"name": 'test{}'.format(i), "count": random.randint(1,100)})
 	info = clean_data(info)
-	return render_template("resultPage.html", result=info, newItems=tempInfo, modelInfo=MODEL_INFO)
+	return render_template("resultPage.html", result=info, newItems=tempInfo, modelInfo=MODEL_INFO, myIndex=[x['model'] for x in MODEL_INFO].index(info['vehicle_make']))
 
 
 @app.route('/cool/', methods=['GET'])
