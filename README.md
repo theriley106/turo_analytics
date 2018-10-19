@@ -4,20 +4,23 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 <center><h1><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1></center>
 
-## Getting Dataset
 
-To create the dataset I needed to pull information on every vehicle listing while using the least amount of networks requests as possible.  To do this, I created an algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
+
+## Dataset
+
+### Getting Dataset
+
+To create the dataset I needed to pull information on every vehicle listing while using the least amount of networks requests as possible.  To do this, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
 
 <p align="center">
   <img src="src/searchLongLat.png"/>
 </p>
-<i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset</h3></i>
 
-## Dataset
+<i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset</h3></i>
 
 This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains the following information for each vehicle.
 
-## Example Response
+### Example Response
 
 ```javascript
 {
@@ -183,7 +186,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 ```
 
 
-
+## API
 
 # Model S *Used* Market Prices
 | Model   | Market Price   |
@@ -220,19 +223,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 |4dr Sedan Signature | $49,151.60|
 |AWD 85D Dual Motor | $64,942.06|
 
-
-```python
-# This is a helper function to convert the floats into dollar amounts
-# This was used for creating the README...
-def convertMoney(string_val):
-	f = re.findall("(\d+.\d+)\|", str(string_val))
-	for val in f:
-		string_val = string_val.replace(val, '${:,.2f}'.format(float(val)))
-	return string_val
-```
-
 ## Web Application
-
 
 <p align="center">
   <img src="src/mainPage.png"/>
@@ -249,6 +240,8 @@ def convertMoney(string_val):
   <img src="src/specific.png"/>
 </p>
 <i><h3 align="center">Search Results</h3></i>
+
+## Misc Visualizations
 
 
 **PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)

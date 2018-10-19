@@ -99,6 +99,23 @@ def getSingleVehicle(id_val):
 	info = clean_data(info)
 	return render_template("resultPage.html", result=info, newItems=tempInfo, modelInfo=MODEL_INFO, myIndex=[x['model'] for x in MODEL_INFO].index(info['vehicle_make']))
 
+@app.route('/api/', methods=['GET'])
+def apiSearch():
+	query = "SELECT "
+	filterType = request.args.get("filter")
+	filterVal = request.args.get("keyword")
+	paramValues = request.args.get("values")
+	if paramValues != None:
+		paramValues = [x.strip() for x in paramValues.split(",")]
+	query += ",".join(paramValues)
+	query += " FROM turodb "
+	if filterType == None or filterVal == None:
+		query = query.strip()
+	else:
+		query += "WHERE {} = '{}'".format(filterType, filterVal)
+	data, success = turo.makeQuery(query, params=paramValues)
+	return jsonify({"success": success, "data": data})
+	return str(filterType) + str(filterVal) + str(paramValues)
 
 @app.route('/cool/', methods=['GET'])
 def cool():

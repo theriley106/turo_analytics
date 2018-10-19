@@ -79,6 +79,15 @@ def returnAirports(latitude=None, longitude=None, maxDistance=7000, maxResults=5
 def genAllURLS():
 	returnAirports()
 
+def verify(query):
+	bad_words = ["DROP", "PLACE", "DELETE"]
+	for val in query.split(" "):
+		if val.upper() in bad_words:
+			return None
+	if query.count(";") > 0:
+		return None
+	return query
+
 def getMoreInfo(vehicleURL):
 	vehicleID = vehicleURL[::-1].partition("/")[0][::-1]
 	params = (
@@ -138,7 +147,10 @@ class search(object):
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
 		#cursor.execute("SELECT vehicle_name, rate_daily, location_address, vehicle_image_thumbnails_620x372, vehicle_year FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
-		cursor.execute("SELECT AVG(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper()))
+		query = "SELECT AVG(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper())
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		val = cursor.fetchone()[0]
 		return round(val, 2)
 
@@ -147,7 +159,10 @@ class search(object):
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
 		#cursor.execute("SELECT vehicle_name, rate_daily, location_address, vehicle_image_thumbnails_620x372, vehicle_year FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
-		cursor.execute("SELECT COUNT(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper()))
+		query = "SELECT COUNT(rate_daily) FROM turodb WHERE UPPER(vehicle_model) like '{}'".format(vehicle_model.upper())
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		val = cursor.fetchone()[0]
 		return int(val)
 
@@ -155,7 +170,10 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
+		query = "SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id))
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
 			vehicle_model = all_vals.pop(-1).replace(")", "")
@@ -176,7 +194,10 @@ class search(object):
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
 		#cursor.execute("SELECT vehicle_name, rate_daily, location_address, vehicle_image_thumbnails_620x372, vehicle_year FROM turodb WHERE vehicle_id = {}".format(int(vehicle_id)))
-		cursor.execute("SELECT {} FROM turodb WHERE vehicle_id = {}".format(', '.join(ALL_KEYS), int(vehicle_id)))
+		query = "SELECT {} FROM turodb WHERE vehicle_id = {}".format(', '.join(ALL_KEYS), int(vehicle_id))
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		for val in cursor.fetchall():
 		  	allResults.append(val)
 		conn.commit()
@@ -187,7 +208,10 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE owner_id = {}".format(int(user_id)))
+		query = "SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE owner_id = {}".format(int(user_id))
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
 			vehicle_model = all_vals.pop(-1).replace(")", "")
@@ -206,7 +230,10 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(make.title()))
+		query = "SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_make = '{}'".format(make.title())
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
 			vehicle_model = all_vals.pop(-1).replace(")", "").replace('"', '')
@@ -247,7 +274,10 @@ class search(object):
 		allResults = []
 		conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
 		cursor = conn.cursor()
-		cursor.execute("SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_model = '{}'".format(model.title()))
+		query = "SELECT (location_longitude, location_latitude, vehicle_id, vehicle_name, vehicle_model) FROM turodb WHERE vehicle_model = '{}'".format(model.title())
+		if verify(query) == None:
+			return []
+		cursor.execute(query)
 		for val in cursor.fetchall():
 			all_vals = [x.strip() for x in str(val[0]).split(",")]
 			vehicle_model = all_vals.pop(-1).replace(")", "").replace('"', '')
@@ -281,7 +311,22 @@ class search(object):
 
 	#def search(self, model=None, make=None, year=None, )
 
-
+def makeQuery(sqlQuery, params=None):
+	allResults = []
+	conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+	cursor = conn.cursor()
+	if verify(sqlQuery) == None:
+		return [], False
+	cursor.execute(sqlQuery)
+	for v in cursor.fetchall():
+		if params == None:
+			allResults.append(v)
+		else:
+			info = {}
+			for i, val in enumerate(params):
+				info[val] = v[i]
+			allResults.append(info)
+	return allResults, True
 
 if __name__ == '__main__':
 	info = {}
