@@ -112,10 +112,9 @@ def apiSearch():
 	if filterType == None or filterVal == None:
 		query = query.strip()
 	else:
-		query += "WHERE {} = '{}'".format(filterType, filterVal)
+		query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
 	data, success = turo.makeQuery(query, params=paramValues)
 	return jsonify({"success": success, "data": data})
-	return str(filterType) + str(filterVal) + str(paramValues)
 
 @app.route('/cool/', methods=['GET'])
 def cool():
