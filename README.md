@@ -172,7 +172,7 @@ Response:
 
 ## Interesting Findings (Info is current to 07/08/2018)
 
-- Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
+### Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
 
 **PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)
 
