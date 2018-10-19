@@ -114,6 +114,14 @@ def saveData(listVal, saveAs):
 	else:
 		raise Exception("File type not valid...")
 
+def genRandomID():
+	allResults = []
+	conn = psycopg2.connect(host="ec2-54-243-129-189.compute-1.amazonaws.com", database="dbfncufnkimb1n", user=credentials.get_sql_username(), password=credentials.get_sql_password())
+	cursor = conn.cursor()
+	cursor.execute("SELECT vehicle_id FROM turodb ORDER BY RANDOM() LIMIT 1")
+	return cursor.fetchone()[0]
+
+
 class search(object):
 	def __init__(self):
 		self.database = []
