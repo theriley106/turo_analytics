@@ -190,11 +190,11 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 <h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
-I wrote the API to make it easier to interact with the dataset.  It's a simple Flask-Based REST API that will return specified vehicle paramaters based on the filters in the URL parameters.  GET and POST methods are both supported.
+I wrote the API to make it easier to interact with the dataset.  It's a simple Flask-Based REST API that will return specified vehicle information based on the filters and parameters you use in the URL.  GET and POST methods are both supported.
 
 ### Examples:
 
-<h4 align="center">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h3>
+<h4 align="center">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h4>
 
 ```javascript
 {
@@ -218,6 +218,34 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
     {
       "rate_daily": 574.0,
       "vehicle_model": "Model X"
+    }
+  ],
+  "success": true
+}
+```
+
+<h4 align="center">/api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3</h4>
+
+```javascript
+{
+  "data": [
+    {
+      "location_city": "Stamford",
+      "rate_daily": 902.0,
+      "vehicle_make": "Fisker",
+      "vehicle_model": "Karma"
+    },
+    {
+      "location_city": "Fontana",
+      "rate_daily": 717.0,
+      "vehicle_make": "Fisker",
+      "vehicle_model": "Karma"
+    },
+    {
+      "location_city": "Atlanta",
+      "rate_daily": 299.0,
+      "vehicle_make": "Fisker",
+      "vehicle_model": "Karma"
     }
   ],
   "success": true
