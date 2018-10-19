@@ -188,11 +188,11 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ## API
 
-<h3 align="center">/api/?filter={Column Filter}&keyword={Keyword}&values={Column1},{Column2}&limit={int Val}</h3>
+<h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
 ### Examples:
 
-<h4 align="center">GET |   /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h3>
+<h4 align="center">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h3>
 
 ```javascript
 {
