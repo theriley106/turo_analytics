@@ -188,7 +188,7 @@ This dataset contains information on roughly ~40,000 currently listed (As of 07/
 
 ## API
 
-<h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
+<h3 align="center">[GET/POST] /api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
 ### Examples:
 

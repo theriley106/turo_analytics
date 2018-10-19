@@ -99,7 +99,7 @@ def getSingleVehicle(id_val):
 	info = clean_data(info)
 	return render_template("resultPage.html", result=info, newItems=tempInfo, modelInfo=MODEL_INFO, myIndex=[x['model'] for x in MODEL_INFO].index(info['vehicle_make']))
 
-@app.route('/api/', methods=['GET'])
+@app.route('/api/', methods=['GET', 'POST'])
 def apiSearch():
 	query = "SELECT "
 	filterType = request.args.get("filter")
