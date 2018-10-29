@@ -79,7 +79,7 @@ I used Flask to create a REST API that would make it easier to interact with the
 <h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
 ### Examples:
-<h5 align="center"><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</a></h5>
+<h5><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</a></h5>
 
 ```javascript
 Response:
