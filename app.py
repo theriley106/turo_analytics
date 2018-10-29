@@ -101,32 +101,35 @@ def getSingleVehicle(id_val):
 
 @app.route('/api/', methods=['GET', 'POST'])
 def apiSearch():
-	query = "SELECT "
-	filterType = request.args.get("filter")
-	filterVal = request.args.get("keyword")
-	paramValues = request.args.get("values")
-	limitVal = request.args.get("limit")
-	if limitVal == None:
-		limitVal = 500
-	if paramValues != None:
-		if "*" in paramValues or "all" in paramValues:
-			paramValues = ALL_KEYS
-		else:
-			paramValues = [x.strip() for x in paramValues.split(",")]
+	try:
+		query = "SELECT "
+		filterType = request.args.get("filter")
+		filterVal = request.args.get("keyword")
+		paramValues = request.args.get("values")
+		limitVal = request.args.get("limit")
+		if limitVal == None:
+			limitVal = 500
+		if paramValues != None:
+			if "*" in paramValues or "all" in paramValues:
+				paramValues = ALL_KEYS
+			else:
+				paramValues = [x.strip() for x in paramValues.split(",")]
 
-	query += ",".join(paramValues)
-	query += " FROM turodb "
-	if filterType == None or filterVal == None:
-		query = query.strip()
-	else:
-		try:
-			int(filterVal)
-			query += "WHERE {} = {}".format(filterType, filterVal)
-		except:
-			query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
-	query += " LIMIT {}".format(int(limitVal))
-	data, success = turo.makeQuery(query, params=paramValues)
-	return jsonify({"success": success, "data": data})
+		query += ",".join(paramValues)
+		query += " FROM turodb "
+		if filterType == None or filterVal == None:
+			query = query.strip()
+		else:
+			try:
+				int(filterVal)
+				query += "WHERE {} = {}".format(filterType, filterVal)
+			except:
+				query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
+		query += " LIMIT {}".format(int(limitVal))
+		data, success = turo.makeQuery(query, params=paramValues)
+		return jsonify({"success": success, "data": data})
+	except Exception as exp:
+		return str(exp)
 
 @app.route("/genViz/", methods=["GET"])
 def genViz():
