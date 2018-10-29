@@ -23,6 +23,11 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 </p>
 <i><h3 align="center">Search Results</h3></i>
 
+<p align="center">
+  <img src="src/searchResult.png"/>
+</p>
+<i><h3 align="center">Vehicle Page</h3></i>
+
 
 ## REST API
 
