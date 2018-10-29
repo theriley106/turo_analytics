@@ -2,7 +2,7 @@
 Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Francisco
 
 
-<center><h1><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1></center>
+<h1 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1>
 
 
 ## Web Application
