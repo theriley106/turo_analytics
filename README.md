@@ -9,8 +9,12 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 <p align="center">
   <img src="src/mainPage.png"/>
+  <br>
+  does this work
+  </p>
 <i><h4 align="center">Main Page</h4></i>
-</p>
+
+
 ***
 
 <p align="center">
