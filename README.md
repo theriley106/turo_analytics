@@ -32,7 +32,7 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 
 ### Examples:
 
-##### /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
+##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
 ```javascript
 Response:
 {
@@ -62,7 +62,7 @@ Response:
 }
 ```
 
-##### /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
+##### GET: /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
 ```javascript
 Response:
 {
@@ -88,25 +88,7 @@ Response:
   ],
   "success": true
 }
-```
-##### /api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year
-```javascript
-Response:
-{
-  "data": [
-    {
-      "location_latitude": 41.053547,
-      "location_longitude": -73.541023,
-      "rate_daily": 902.0,
-      "vehicle_make": "Fisker",
-      "vehicle_model": "Karma",
-      "vehicle_year": 2012
-    }
-  ],
-  "success": true
-}
-```
-##### /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
+##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
 ```javascript
 Response:
 {
