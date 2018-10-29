@@ -6,9 +6,7 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 ## Dataset
 
-### Getting Dataset
-
-To create the dataset I needed to pull information on every vehicle listing while using the least amount of networks requests as possible.  To do this, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
+To pull information on every vehicle listing while using the least amount of networks requests, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
 
 <p align="center">
   <img src="src/searchLongLat.png"/>
