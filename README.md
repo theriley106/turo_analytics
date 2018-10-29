@@ -187,12 +187,17 @@ Response:
 }
 ```
 
-## Misc Visualizations
+<h1 align="center">Interesting Findings from the Data Set (Last updated 7/08/18</h1>
 
+- Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
 
-## Interesting Findings (Info is current to 07/08/2018)
+- Dinton's Toyota Camry is the least expensive car on Turo with a daily rate of $10.00
 
-### Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
+- There are 649 Tesla Vehicles on Turo
+
+- The most common vehicle model on Turo is a BMW 3 Series (569 Listings)
+
+- Scott's 2010 Kia Soul is the most reviewed vehicle on Turo with 233 reviews
 
 **PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)
 
