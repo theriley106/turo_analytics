@@ -128,6 +128,19 @@ def apiSearch():
 	data, success = turo.makeQuery(query, params=paramValues)
 	return jsonify({"success": success, "data": data})
 
+@app.route("/genViz/", methods=["GET"])
+def genViz():
+	information = []
+	a = turo.makeQuery("SELECT DISTINCT vehicle_make FROM turodb")[0]
+	all_models = [x[0] for x in a]
+	print all_models
+	for vehicle in all_models:
+		b = turo.makeQuery("SELECT COUNT(vehicle_id) FROM turodb WHERE UPPER(vehicle_make) = UPPER('{}')".format(vehicle))
+		information.append({"price": b[0][0][0], "model": vehicle.title()})
+	#print [x[0] for x in a]
+	information = sorted(information, key=lambda k: k['price'])
+	return render_template("singleViz.html", information=information)
+
 @app.route('/cool/', methods=['GET'])
 def cool():
 	return render_template("cool2.html")

@@ -329,7 +329,10 @@ def makeQuery(sqlQuery, params=None):
 	return allResults, True
 
 if __name__ == '__main__':
-	sqlQuery = raw_input("Query: ")
+	#sqlQuery = raw_input("Query: ")
+	sqlQuery = "SELECT vehicle_model, count(vehicle_model) FROM turodb GROUP BY vehicle_model ORDER BY COUNT(*)"
+	sqlQuery = "SELECT max(reviewCount) from turodb"
+	sqlQuery = "SELECT vehicle_id from turodb where reviewCount = 233"
 	print makeQuery(sqlQuery)
 	'''
 	info = {}

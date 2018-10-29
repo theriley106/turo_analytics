@@ -1,7 +1,6 @@
+# This removes duplicate vehicle ids in the dataset
+
 import json
-
-
-
 
 a = open("my_file.json").read().split("\n")
 a.remove(a[-1])
