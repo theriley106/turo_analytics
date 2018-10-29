@@ -11,22 +11,28 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
   <img src="src/mainPage.png"/>
 <i><h4 align="center">Main Page</h4></i>
 </p>
+***
 
 <p align="center">
   <img src="src/searchByMfg.png"/>
 </p>
 <i><h4 align="center">Search By Manufacturer</h4></i>
 
+***
+
 <p align="center">
   <img src="src/searchByMake.png"/>
 </p>
 <i><h4 align="center">Search By Manufacturer: Tesla</h4></i>
+
+***
 
 <p align="center">
   <img src="src/specific.png"/>
 </p>
 <i><h4 align="center">Finding all Tesla vehicles listed on Turo</h4></i>
 
+***
 <p align="center">
   <img src="src/searchResult.png"/>
 </p>
