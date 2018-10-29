@@ -26,7 +26,9 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 ## REST API
 
-I wrote the API to make it easier to interact with the dataset.  It's a simple Flask-Based REST API that will return specified vehicle information based on the filters and parameters you use in the URL.  GET and POST methods are both supported.
+I used Flask to create a REST API that would make it easier to interact with the dataset.  The API returns specified vehicle information based on the filters and parameters you use in the URL.  GET and POST methods are both supported.
+
+***
 
 <h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
