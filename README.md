@@ -2,9 +2,9 @@
 Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Francisco
 
 
-<h2 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h2>
+<h1 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1>
 
-## Dataset
+<h1 align="center">TuroAnalytics Dataset</h1>
 
 To pull information on every vehicle listing while using the least amount of networks requests, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
 
@@ -22,7 +22,7 @@ To pull information on every vehicle listing while using the least amount of net
 
 <h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
 
-## Web Application
+<h1 align="center">TuroAnalytics Web App</h1>
 
 <p align="center">
   <img src="src/mainPage.png"/>
@@ -76,7 +76,7 @@ To pull information on every vehicle listing while using the least amount of net
 </p>
 
 
-## REST API
+<h1 align="center">TuroAnalytics REST API</h1>
 
 I used Flask to create a REST API that would make it easier to interact with the dataset.  The API returns specified vehicle information based on the filters and parameters you use in the URL.  GET and POST methods are both supported.
 
@@ -187,7 +187,7 @@ Response:
 }
 ```
 
-<h1 align="center">Interesting Findings from the Data Set (Last updated 7/08/18</h1>
+<h1 align="center">Interesting Findings from the Dataset</h1>
 
 - Matias's Lamborghini Huracan is the most expensive car on Turo with a daily rate of $1140.00
 
