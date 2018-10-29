@@ -33,6 +33,7 @@ I wrote the API to make it easier to interact with the dataset.  It's a simple F
 ### Examples:
 
 ##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
+
 ```javascript
 Response:
 {
@@ -63,6 +64,7 @@ Response:
 ```
 
 ##### GET: /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
+
 ```javascript
 Response:
 {
@@ -87,7 +89,8 @@ Response:
     }
   ],
   "success": true
-}
+}```
+
 ##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
 ```javascript
 Response:
