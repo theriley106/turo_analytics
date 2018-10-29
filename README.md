@@ -2,7 +2,7 @@
 
 <h1 align="center">Turo Analytics Dataset Creation</h1>
 
-To pull information on every vehicle listing while using the least amount of networks requests, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
+To pull information on every vehicle listing while using the least amount of networks requests, I created a greedy algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
 
 <p align="center">
   <img src="src/searchLongLat.png"/>
@@ -14,7 +14,7 @@ To pull information on every vehicle listing while using the least amount of net
   </i>
 </p>
 
-<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
+<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">84 Data Points</a> for each vehicle.</h3>
 
 <h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
 
