@@ -127,8 +127,10 @@ def apiSearch():
 				query += "WHERE UPPER({}) = UPPER('{}')".format(filterType, filterVal)
 		query += " LIMIT {}".format(int(limitVal))
 		data, success = turo.makeQuery(query, params=paramValues)
-
-		return jsonify({"success": success, "data": [str(x) for x in data]})
+		for d in data:
+			for key, value in d.items():
+				d[key] = str(value)
+		return jsonify({"success": success, "data": data})
 	except Exception as exp:
 		return str(exp)
 
