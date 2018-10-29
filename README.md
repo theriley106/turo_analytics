@@ -1,7 +1,3 @@
-# turo_analytics
-Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Francisco
-
-
 <h1 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1>
 
 <h1 align="center">Turo Analytics Dataset Creation</h1>
