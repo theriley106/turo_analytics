@@ -4,6 +4,24 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 <h1 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1>
 
+<h1 align="center">TuroAnalytics Dataset</h1>
+
+To pull information on every vehicle listing while using the least amount of networks requests, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
+
+<p align="center">
+  <img src="src/searchLongLat.png"/>
+  <br>
+  <i>
+    <b>
+      Data Visualization representing the Long/Lat points used to create the Dataset
+    </b>
+  </i>
+</p>
+
+<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
+
+<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
+
 <p align="center">
   <img src="src/mainPage.png"/>
   <br>
@@ -176,25 +194,6 @@ Response:
 - The most common vehicle model on Turo is a BMW 3 Series (569 Listings)
 
 - Scott's 2010 Kia Soul is the most reviewed vehicle on Turo with 233 reviews
-
-<h1 align="center">TuroAnalytics Dataset</h1>
-
-To pull information on every vehicle listing while using the least amount of networks requests, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
-
-<p align="center">
-  <img src="src/searchLongLat.png"/>
-  <br>
-  <i>
-    <b>
-      Data Visualization representing the Long/Lat points used to create the Dataset
-    </b>
-  </i>
-</p>
-
-<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
-
-<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
-
 
 **PS. If Turo is looking for Software Engineering/Data Science Interns for the Spring/Summer of 2019, please let me know.  I would love to join the team in San Francisco :)
 
