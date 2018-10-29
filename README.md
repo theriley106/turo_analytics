@@ -91,7 +91,8 @@ Response:
     }
   ],
   "success": true
-}```
+}
+```
 
 ##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
 
