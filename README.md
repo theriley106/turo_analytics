@@ -80,7 +80,7 @@ I used Flask to create a REST API that would make it easier to interact with the
 
 ### Examples:
 
-##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
+<h5 align=center>GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</h5>
 
 ```javascript
 Response:
