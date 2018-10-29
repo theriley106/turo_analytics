@@ -183,10 +183,10 @@ To create the dataset I needed to pull information on every vehicle listing whil
 <i><h3 align="center">Data Visualization representing the Long/Lat points used to create the Dataset</h3></i>
 
 
-<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
-</p>
+<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
 
-<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points for each vehicle.</a></h3>
+<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
+
 
 ## Misc Visualizations
 
