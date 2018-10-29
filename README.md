@@ -4,6 +4,25 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 
 <h1 align=center><a href="http://turo-analytics.herokuapp.com/">Check out the Turo Analytics Web App</a></h1>
 
+## Dataset
+
+### Getting Dataset
+
+To create the dataset I needed to pull information on every vehicle listing while using the least amount of networks requests as possible.  To do this, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
+
+<p align="center">
+  <img src="src/searchLongLat.png"/>
+  <br>
+  <i>
+    <b>
+      Data Visualization representing the Long/Lat points used to create the Dataset
+    </b>
+  </i>
+</p>
+
+<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
+
+<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
 
 ## Web Application
 
@@ -169,27 +188,6 @@ Response:
   "success": true
 }
 ```
-
-## Dataset
-
-### Getting Dataset
-
-To create the dataset I needed to pull information on every vehicle listing while using the least amount of networks requests as possible.  To do this, I created a (pretty greedy) algorithm in *genLatLong.py* that attempts to find the largest covered area while using the least amount of coordinates.
-
-<p align="center">
-  <img src="src/searchLongLat.png"/>
-  <br>
-  <i>
-    <b>
-      Data Visualization representing the Long/Lat points used to create the Dataset
-    </b>
-  </i>
-</p>
-
-<h3 align=center>Note: This dataset contains information on roughly ~40,000 currently listed (As of 07/08/2018) vehicles on Turo.  The dataset contains <a href="https://github.com/theriley106/turo_analytics/blob/master/searchParams.md" target="_blank">**84** Data Points</a> for each vehicle.</h3>
-
-<h2 align=center><a href="https://www.kaggle.com/theriley106/turo-rental-car-pricing-info">Download the Dataset Here</a></h2>
-
 
 ## Misc Visualizations
 
