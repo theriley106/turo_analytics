@@ -24,17 +24,16 @@ Analyzing Turo rental car data to find vehicle arbitrage opportunities in San Fr
 <i><h3 align="center">Search Results</h3></i>
 
 
-## API
-
-<h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
+## REST API
 
 I wrote the API to make it easier to interact with the dataset.  It's a simple Flask-Based REST API that will return specified vehicle information based on the filters and parameters you use in the URL.  GET and POST methods are both supported.
 
+<h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
+
 ### Examples:
 
+##### /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
 ```javascript
-Endpoint: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5
-
 Response:
 {
   "data": [
@@ -65,8 +64,6 @@ Response:
 
 ##### /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
 ```javascript
-Endpoint:
-
 Response:
 {
   "data": [
@@ -92,10 +89,8 @@ Response:
   "success": true
 }
 ```
-
+##### /api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year
 ```javascript
-Endpoint: /api/?filter=vehicle_id&keyword=412367&values=vehicle_model,vehicle_make,rate_daily,location_longitude,location_latitude,vehicle_year
-
 Response:
 {
   "data": [
@@ -111,10 +106,8 @@ Response:
   "success": true
 }
 ```
-
+##### /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
 ```javascript
-Endpoint: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
-
 Response:
 {
   "data": [
