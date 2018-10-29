@@ -79,7 +79,7 @@ I used Flask to create a REST API that would make it easier to interact with the
 <h3 align="center">/api/?filter={}&keyword={}&values={},{}&limit={}</h3>
 
 ### Examples:
-<h5><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</a></h5>
+<h4><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_model,rate_daily&limit=5</a></h4>
 
 ```javascript
 Response:
@@ -110,7 +110,7 @@ Response:
 }
 ```
 
-##### GET: /api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3
+<h4><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3">/api/?filter=vehicle_model&keyword=karma&values=vehicle_make,vehicle_model,rate_daily,location_city&limit=3</a></h4>
 
 ```javascript
 Response:
@@ -139,7 +139,7 @@ Response:
 }
 ```
 
-##### GET: /api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10
+<h4><a href="http://turo-analytics.herokuapp.com/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10">/api/?filter=vehicle_make&keyword=Tesla&values=vehicle_name&limit=10</a></h4>
 
 ```javascript
 Response:
