@@ -1,4 +1,4 @@
-Flask==0.10.1
+Flask==1.0
 boto==2.48.0
 boto3==1.4.8
 gunicorn==19.7.1
